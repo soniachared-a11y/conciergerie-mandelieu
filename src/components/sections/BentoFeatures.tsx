@@ -1,115 +1,177 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Clock, ShieldCheck, UserCheck, Car, Wifi, Lock } from "lucide-react";
+import {
+  User,
+  MapPin,
+  Clock,
+  Route,
+  ArrowRight,
+  Navigation,
+  Wifi,
+} from "lucide-react";
 
 export default function BentoFeatures() {
   return (
     <section className="py-24 bg-background relative z-20">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
           <h2 className="text-3xl lg:text-4xl font-semibold text-foreground tracking-tight mb-4">
-            L&apos;Excellence en Détail
+            Votre course en direct
           </h2>
           <p className="text-foreground/80 font-light">
-            Une approche moderne du transport privé sur la Riviera.
+            Dashboard passager — comme si vous étiez à bord.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[200px]">
-          <motion.div
-            className="md:col-span-2 rounded-3xl p-8 relative overflow-hidden border border-primary/20 bg-background/80 hover:border-primary/40 transition-all duration-500"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="absolute right-0 top-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px]" />
-            <div className="relative z-10 flex flex-col justify-between h-full">
-              <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-primary mb-4 border border-primary/30">
-                <Clock className="w-6 h-6" strokeWidth={1.5} />
-              </div>
+        <motion.div
+          className="max-w-5xl mx-auto rounded-3xl border border-primary/20 bg-background/95 backdrop-blur-sm overflow-hidden shadow-2xl shadow-primary/5"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          {/* Barre supérieure : heure, date, statut */}
+          <div className="flex flex-wrap items-center justify-between gap-4 p-6 border-b border-primary/10 bg-foreground/[0.03]">
+            <div className="flex items-center gap-6">
               <div>
-                <h3 className="text-2xl font-semibold text-foreground tracking-tight mb-2">
-                  Disponibilité 24/7
-                </h3>
-                <p className="text-foreground/80 font-light max-w-sm">
-                  De jour comme de nuit, dimanche et jours fériés, nous assurons
-                  vos déplacements sans interruption de Mandelieu à Monaco.
+                <p className="text-3xl font-semibold text-foreground tabular-nums tracking-tight">
+                  14:27
+                </p>
+                <p className="text-sm text-foreground/60 flex items-center gap-2 mt-0.5">
+                  <span>Mardi 15 mars 2024</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                  <span className="text-primary font-medium">Riviera Conciergerie</span>
                 </p>
               </div>
+              <div className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-background/80 border border-primary/20">
+                <Wifi className="w-4 h-4 text-primary" strokeWidth={1.5} />
+                <span className="text-sm text-foreground/90">Connecté</span>
+              </div>
             </div>
-          </motion.div>
+            <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
+              <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden">
+                <User className="w-4 h-4 text-primary" strokeWidth={1.5} />
+              </div>
+              <div>
+                <p className="text-sm font-medium text-foreground">Nom du passager</p>
+                <p className="text-xs text-foreground/60">Sophie L.</p>
+              </div>
+            </div>
+          </div>
 
-          <motion.div
-            className="md:row-span-2 rounded-3xl p-8 relative overflow-hidden border border-primary/30 bg-background/80 hover:border-primary/50 transition-all duration-500 flex flex-col items-center text-center justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-          >
-            <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center text-primary mb-6 border border-primary/30">
-              <ShieldCheck className="w-8 h-8" strokeWidth={1.5} />
-            </div>
-            <h3 className="text-xl font-semibold text-foreground tracking-tight mb-2">
-              Paiement SumUp Sécurisé
-            </h3>
-            <p className="text-foreground/80 font-light text-sm mb-8">
-              Technologie bancaire de pointe pour protéger vos données.
-            </p>
-            <div className="relative w-full h-32 flex items-center justify-center overflow-hidden">
-              <div className="relative w-48 h-28 max-w-full mx-auto bg-background/80 border border-primary/30 rounded-xl flex flex-col p-4 justify-between">
-                <div className="flex justify-between items-start">
-                  <div className="w-8 h-6 rounded bg-primary/40" />
-                  <Wifi className="w-5 h-5 text-foreground/30 rotate-90" strokeWidth={1.5} />
+          <div className="grid lg:grid-cols-3 gap-6 p-6">
+            {/* Carte / itinéraire (grande zone) */}
+            <div className="lg:col-span-2 relative h-64 lg:h-72 rounded-2xl overflow-hidden border border-primary/20 bg-foreground/5">
+              <img
+                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop"
+                alt="Itinéraire"
+                className="absolute inset-0 w-full h-full object-cover opacity-40"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+              <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-background/80 backdrop-blur-md border border-primary/20">
+                  <Navigation className="w-4 h-4 text-primary" strokeWidth={1.5} />
+                  <span className="text-sm font-medium text-foreground">Navigation</span>
                 </div>
-                <div className="flex gap-2 opacity-40 mt-auto">
-                  <div className="w-8 h-1.5 bg-foreground rounded-full" />
-                  <div className="w-4 h-1.5 bg-foreground rounded-full" />
-                </div>
-                <div className="absolute -top-3 -right-3 w-10 h-10 bg-background border border-primary text-primary rounded-full flex items-center justify-center shadow-xl z-20">
-                  <Lock className="w-5 h-5" strokeWidth={2} />
+              </div>
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="rounded-xl p-4 bg-background/90 backdrop-blur-md border border-primary/20">
+                  <div className="flex items-center gap-2 text-primary mb-1">
+                    <ArrowRight className="w-4 h-4 shrink-0" strokeWidth={1.5} />
+                    <span className="text-sm font-medium">
+                      Dans 800 m, tournez à droite — Promenade des Anglais
+                    </span>
+                  </div>
+                  <p className="text-xs text-foreground/70 pl-6">
+                    Puis continuez 2,3 km et gardez la gauche
+                  </p>
                 </div>
               </div>
             </div>
-          </motion.div>
 
-          <motion.div
-            className="rounded-3xl p-6 border border-primary/20 bg-background/80 hover:border-primary/40 transition-all duration-500"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            <UserCheck className="w-8 h-8 text-primary mb-4" strokeWidth={1.5} />
-            <h3 className="text-lg font-semibold text-foreground tracking-tight">
-              Chauffeurs Agréés
-            </h3>
-            <p className="text-foreground/70 text-sm font-light mt-1">
-              Professionnels VTC vérifiés.
-            </p>
-          </motion.div>
+            {/* Bloc arrivée : adresse, temps restant, distance, heure */}
+            <div className="space-y-4">
+              <div className="rounded-2xl p-5 border border-primary/20 bg-background/80 backdrop-blur-sm">
+                <div className="flex items-start gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center shrink-0">
+                    <MapPin className="w-5 h-5 text-primary" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <p className="text-xs font-medium text-foreground/60 uppercase tracking-wider mb-0.5">
+                      Adresse d&apos;arrivée
+                    </p>
+                    <p className="text-lg font-semibold text-foreground">
+                      Casino de Monte-Carlo
+                    </p>
+                    <p className="text-sm text-foreground/70">
+                      Place du Casino, 98000 Monaco
+                    </p>
+                  </div>
+                </div>
+                <div className="pt-4 border-t border-primary/10 flex items-end justify-between">
+                  <div>
+                    <p className="text-2xl lg:text-3xl font-semibold text-primary tabular-nums">
+                      14:35
+                    </p>
+                    <p className="text-xs text-foreground/60">Heure d&apos;arrivée</p>
+                  </div>
+                </div>
+              </div>
 
-          <motion.div
-            className="rounded-3xl p-6 border border-primary/20 bg-background/80 hover:border-primary/40 transition-all duration-500"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-          >
-            <Car className="w-8 h-8 text-primary mb-4" strokeWidth={1.5} />
-            <h3 className="text-lg font-semibold text-foreground tracking-tight">
-              Véhicules Récents
-            </h3>
-            <p className="text-foreground/70 text-sm font-light mt-1">
-              Flotte &lt; 3 ans d&apos;ancienneté.
-            </p>
-          </motion.div>
-        </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="rounded-xl p-4 border border-primary/20 bg-background/80 flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                    <Clock className="w-5 h-5 text-primary" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <p className="text-xl font-semibold text-foreground tabular-nums">8 min</p>
+                    <p className="text-xs text-foreground/60">Temps restant</p>
+                  </div>
+                </div>
+                <div className="rounded-xl p-4 border border-primary/20 bg-background/80 flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                    <Route className="w-5 h-5 text-primary" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <p className="text-xl font-semibold text-foreground tabular-nums">3,2 km</p>
+                    <p className="text-xs text-foreground/60">Distance</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Compteur / statut course */}
+          <div className="px-6 pb-6">
+            <div className="rounded-xl px-5 py-4 border border-primary/20 bg-primary/5 flex flex-wrap items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30">
+                  <span className="text-lg font-bold text-primary tabular-nums">08</span>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-foreground">Temps restant</p>
+                  <p className="text-xs text-foreground/60">Mise à jour en direct</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-6 text-sm">
+                <span className="flex items-center gap-1.5 text-foreground/80">
+                  <Clock className="w-4 h-4 text-primary" strokeWidth={1.5} />
+                  <span className="tabular-nums">14:35</span> arrivée
+                </span>
+                <span className="flex items-center gap-1.5 text-foreground/80">
+                  <Route className="w-4 h-4 text-primary" strokeWidth={1.5} />
+                  <span className="tabular-nums">3,2</span> km
+                </span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
