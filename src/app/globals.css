@@ -1,26 +1,102 @@
 @import "tailwindcss";
 
+/* Design System - Conciergerie Mandelieu */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary (Mint) */
+  --primary: #99ffcc;
+  /* Background (Carbon) */
+  --background: #1e1e1e;
+  --foreground: #f5f5f5;
 }
 
 @theme inline {
+  --color-primary: var(--primary);
+  --color-carbon: var(--background);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Barre roulante - animation infinie */
+@keyframes scroll-infinite {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-infinite {
+  animation: scroll-infinite 20s linear infinite;
+}
+
+.animate-scroll-infinite-slow {
+  animation: scroll-infinite 60s linear infinite;
+}
+
+/* Masque bords dégradés pour la barre */
+.mask-linear-fade {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+/* Chemin vers l'excellence - ligne centrale route (défilement continu) */
+@keyframes road-move {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100px);
+  }
+}
+
+.animate-road-move,
+.road-line {
+  animation: road-move 0.6s linear infinite;
+}
+
+/* Pause animation au survol (témoignages) */
+.pause-on-hover:hover {
+  animation-play-state: paused;
+}
+
+/* CoverageMap : fil néon qui parcourt l'itinéraire Mandelieu → Monaco */
+@keyframes draw-route-neon {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  40% {
+    stroke-dashoffset: 0;
+  }
+  60% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -100;
+  }
+}
+
+.route-line-neon {
+  stroke-dasharray: 100;
+  animation: draw-route-neon 3s ease-in-out infinite;
 }

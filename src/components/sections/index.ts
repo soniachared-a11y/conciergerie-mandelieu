@@ -1,0 +1,17 @@
+export { default as Header } from "./Header";
+export { default as Hero } from "./Hero";
+export { default as PartnersMarquee } from "./PartnersMarquee";
+export { default as Services } from "./Services";
+export { default as HowItWorks } from "./HowItWorks";
+export { default as Fleet } from "./Fleet";
+export { default as Stats } from "./Stats";
+export { default as ExperienceOnBoard } from "./ExperienceOnBoard";
+export { default as CoverageMap } from "./CoverageMap";
+export { default as BentoFeatures } from "./BentoFeatures";
+export { default as PaymentDemo } from "./PaymentDemo";
+export { default as ComparisonTable } from "./ComparisonTable";
+export { default as CheminVersExcellence } from "./CheminVersExcellence";
+export { default as TestimonialsCarousel } from "./TestimonialsCarousel";
+export { default as FAQ } from "./FAQ";
+export { default as FinalCTA } from "./FinalCTA";
+export { default as Footer } from "./Footer";
