@@ -2,6 +2,7 @@ import {
   Header,
   Hero,
   PartnersMarquee,
+  ConciergerieServices,
   Services,
   HowItWorks,
   Fleet,
@@ -24,6 +25,7 @@ export default function Home() {
       <Header />
       <Hero />
       <PartnersMarquee />
+      <ConciergerieServices />
       <Services />
       <HowItWorks />
       <Fleet />

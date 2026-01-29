@@ -1,7 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
+
+const COVERAGE_BG = "/assets/images/coverage-map-bg.png";
 
 // Ordre de l'itinéraire : Mandelieu → Cannes → Nice → Monaco (côte)
 const POINTS = [
@@ -17,12 +20,15 @@ const ROUTE_PATH = "M 18 48 L 28 46 L 52 38 L 72 32";
 export default function CoverageMap() {
   return (
     <section className="relative h-[500px] w-full overflow-hidden bg-background border-b border-primary/10">
-      {/* Carte réelle de la région Mandelieu–Monaco (Alpes-Maritimes) */}
+      {/* Arrière-plan : vue Riviera / Monaco */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Carte_Alpes-Maritimes.png/1200px-Carte_Alpes-Maritimes.png"
-          alt="Carte Mandelieu - Monaco, Côte d'Azur"
-          className="w-full h-full object-cover object-center"
+        <Image
+          src={COVERAGE_BG}
+          alt="Vue Riviera — Mandelieu à Monaco"
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          priority={false}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/40 to-transparent z-[1]" />
       </div>

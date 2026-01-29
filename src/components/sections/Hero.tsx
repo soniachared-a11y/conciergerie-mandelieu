@@ -23,8 +23,8 @@ export default function Hero() {
         </video>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
-        <div className="max-w-3xl pt-10 flex flex-col items-center text-center md:block md:text-left">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full flex justify-start md:justify-start">
+        <div className="max-w-2xl pt-10 flex flex-col items-center text-center md:items-start md:text-left">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -39,23 +39,24 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-7xl font-semibold text-foreground tracking-tight leading-[1.05] mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+            className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-foreground tracking-tight leading-[1.1] mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
           >
-            RIVIERA CONCIERGERIE&nbsp;: L&apos;Excellence de Mandelieu à Monaco.
+            Riviera Conciergerie&nbsp;: l&apos;excellence de Mandelieu à Monaco.
           </motion.h1>
 
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg lg:text-xl text-foreground font-light leading-relaxed mb-10 max-w-xl drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]"
+            className="font-display text-lg lg:text-xl text-foreground font-light leading-relaxed mb-10 max-w-lg space-y-3 drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]"
           >
-            Le transport privé haute couture sur toute la Côte d&apos;Azur. De
-            la Baie de Cannes au Carré d&apos;Or de Monte-Carlo, profitez
-            d&apos;une discrétion absolue et d&apos;un confort inégalé. Nos
-            chauffeurs desservent Mandelieu, Cap d&apos;Ail, Beaulieu-sur-Mer et
-            la Principauté.
-          </motion.p>
+            <p>
+              <strong className="font-medium text-primary">Véhicules à louer</strong> — Location haut de gamme sur la Côte d&apos;Azur.
+            </p>
+            <p>
+              <strong className="font-medium text-primary">Chauffeur privé</strong> — Transport en véhicules électriques, silence et tranquillité de Mandelieu à Monaco.
+            </p>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
