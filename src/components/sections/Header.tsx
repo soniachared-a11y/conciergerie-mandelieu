@@ -39,10 +39,10 @@ export default function Header() {
           </nav>
           <a
             href="tel:0132345465"
-            className="hidden md:flex items-center gap-2 bg-primary hover:bg-primary/90 text-background px-5 py-2.5 rounded-full text-sm font-medium transition-all shadow-md"
+            className="hidden md:flex items-center gap-2.5 bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary/50 text-primary px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300"
           >
             <Phone className="w-4 h-4 shrink-0" strokeWidth={1.5} />
-            <span>01.32.34.54.65</span>
+            <span className="tracking-tight">01.32.34.54.65</span>
           </a>
           <button
             type="button"

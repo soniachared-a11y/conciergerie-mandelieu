@@ -23,7 +23,7 @@ export default function Hero() {
         </video>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full flex justify-start">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:pl-4 lg:pr-12 w-full flex justify-start">
         <div className="max-w-xl pt-6 flex flex-col items-start text-left">
           <motion.span
             initial={{ opacity: 0, y: 12 }}
@@ -57,16 +57,16 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.24 }}
-            className="flex flex-col sm:flex-row items-start gap-6"
+            className="flex flex-col sm:flex-row items-center gap-6"
           >
             <Link
               href="#reservation"
-              className="group inline-flex items-center gap-2 text-foreground border border-foreground/40 hover:border-foreground/70 px-6 py-3 rounded-full text-sm font-medium tracking-wide transition-colors duration-300"
+              className="group inline-flex items-center gap-2.5 bg-foreground/10 hover:bg-foreground/20 border border-foreground/40 hover:border-foreground/60 text-foreground px-6 py-3 rounded-lg text-sm font-medium tracking-wide transition-all duration-300"
             >
-              <span>Réserver</span>
+              <span>Découvrir</span>
               <ArrowRight className="w-4 h-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={1.5} />
             </Link>
-            <span className="text-xs text-foreground/60 tracking-wide">
+            <span className="text-xs text-primary/90 tracking-wide">
               Paiement SumUp · Devis instantané
             </span>
           </motion.div>
@@ -75,37 +75,37 @@ export default function Hero() {
 
       {/* Module résa format ligne — bas à droite (compact mobile, plus à droite bureau) */}
       <motion.div
-        className="absolute bottom-4 right-4 left-4 sm:left-auto sm:bottom-6 sm:right-4 lg:right-4 xl:right-6 z-10 w-full max-w-[260px] sm:max-w-none sm:w-[400px]"
+        className="absolute bottom-4 right-4 left-4 sm:left-auto sm:bottom-6 sm:right-2 lg:right-2 xl:right-4 z-10 w-full max-w-[260px] sm:max-w-none sm:w-[380px]"
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
       >
-        <div className="bg-background/85 backdrop-blur-md rounded-lg sm:rounded-xl border border-primary/20 shadow-lg sm:shadow-xl p-2.5 sm:p-4">
-          <p className="text-[9px] sm:text-xs font-medium text-primary/90 uppercase tracking-wider mb-1.5 sm:mb-2.5 flex items-center gap-1 sm:gap-1.5">
+        <div className="bg-foreground/10 backdrop-blur-sm rounded-lg sm:rounded-xl border border-foreground/25 shadow-lg sm:shadow-xl p-2 sm:p-3">
+          <p className="text-[9px] sm:text-xs font-medium text-foreground/90 uppercase tracking-wider mb-1 sm:mb-2 flex items-center gap-1 sm:gap-1.5">
             <MapPin className="w-2.5 h-2.5 sm:w-3 sm:h-3 shrink-0" strokeWidth={1.5} />
             Réserver une course
           </p>
-          <div className="flex flex-col sm:flex-row gap-1.5 sm:gap-2.5">
+          <div className="flex flex-col sm:flex-row gap-1 sm:gap-2">
             <input
               type="text"
               placeholder="Départ"
-              className="flex-1 min-w-0 px-2 py-1.5 sm:py-2 rounded-md sm:rounded-lg bg-background/90 border border-primary/20 text-foreground text-[11px] sm:text-xs placeholder:text-foreground/50 focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+              className="flex-1 min-w-0 px-2 py-1.5 rounded-md sm:rounded-lg bg-background/80 border border-foreground/20 text-foreground text-[11px] sm:text-xs placeholder:text-foreground/50 focus:outline-none focus:ring-1 focus:ring-foreground/40 focus:border-foreground/30 transition-colors"
               aria-label="Lieu de départ"
             />
             <input
               type="text"
               placeholder="Arrivée"
-              className="flex-1 min-w-0 px-2 py-1.5 sm:py-2 rounded-md sm:rounded-lg bg-background/90 border border-primary/20 text-foreground text-[11px] sm:text-xs placeholder:text-foreground/50 focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+              className="flex-1 min-w-0 px-2 py-1.5 rounded-md sm:rounded-lg bg-background/80 border border-foreground/20 text-foreground text-[11px] sm:text-xs placeholder:text-foreground/50 focus:outline-none focus:ring-1 focus:ring-foreground/40 focus:border-foreground/30 transition-colors"
               aria-label="Lieu d'arrivée"
             />
             <input
               type="date"
-              className="w-full sm:w-24 shrink-0 px-2 py-1.5 sm:py-2 rounded-md sm:rounded-lg bg-background/90 border border-primary/20 text-foreground text-[11px] sm:text-xs focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+              className="w-full sm:w-24 shrink-0 px-2 py-1.5 rounded-md sm:rounded-lg bg-background/80 border border-foreground/20 text-foreground text-[11px] sm:text-xs focus:outline-none focus:ring-1 focus:ring-foreground/40 focus:border-foreground/30 transition-colors"
               aria-label="Date"
             />
             <Link
               href="#reservation"
-              className="inline-flex items-center justify-center gap-1 sm:gap-1.5 bg-primary hover:bg-primary/90 text-background font-medium py-1.5 sm:py-2 px-3 sm:px-4 rounded-md sm:rounded-lg text-[11px] sm:text-xs transition-colors whitespace-nowrap shrink-0"
+              className="inline-flex items-center justify-center gap-1 sm:gap-1.5 bg-primary/20 hover:bg-primary/30 border border-primary/40 hover:border-primary/60 text-primary px-3 sm:px-4 py-1.5 sm:py-2 rounded-md sm:rounded-lg text-[11px] sm:text-xs font-medium transition-all duration-300 whitespace-nowrap shrink-0"
             >
               Devis
               <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" strokeWidth={1.5} />

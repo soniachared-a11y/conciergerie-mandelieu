@@ -110,6 +110,8 @@ export default function Footer() {
         >
           <p className="text-foreground/50 text-xs font-light">
             © {new Date().getFullYear()} Riviera Conciergerie. Tous droits réservés.
+            <span className="mx-2">·</span>
+            Créé par <span className="text-primary/80 font-medium">Pertinentia</span>
           </p>
           <div className="flex flex-wrap justify-center md:justify-end items-center gap-4 text-xs text-foreground/60 font-light">
             <Link href="#" className="hover:text-foreground/80">

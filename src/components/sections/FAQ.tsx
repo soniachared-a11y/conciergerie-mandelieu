@@ -48,7 +48,7 @@ export default function FAQ() {
 
   return (
     <section
-      className="py-12 lg:py-16 relative overflow-hidden"
+      className="py-24 relative overflow-hidden"
       data-section="faq"
     >
       {/* Image de fond — flotte prestige */}
