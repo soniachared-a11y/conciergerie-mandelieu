@@ -156,7 +156,7 @@ export default function FAQ() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -4 }}
                   transition={{ duration: 0.3 }}
-                  className={RESA_TITLES[resaTitleIndex].className}
+                  className={`font-display ${RESA_TITLES[resaTitleIndex].className}`}
                 >
                   {RESA_TITLES[resaTitleIndex].text}
                 </motion.span>

@@ -116,7 +116,7 @@ export default function FleetServicesMarquee() {
                 </div>
                 <div className="p-4 min-h-[124px] flex flex-col">
                   <h3 className="text-base font-semibold text-foreground">{v.title}</h3>
-                  <span className="inline-block w-fit font-display text-[11px] font-medium uppercase tracking-[0.15em] mt-1 mb-1.5 px-2.5 py-1 rounded-md bg-primary/20 text-primary border border-primary/30 shadow-sm whitespace-nowrap">
+                  <span className="inline-block w-fit font-display text-[11px] font-medium uppercase tracking-[0.15em] mt-1 mb-1.5 text-primary/90 whitespace-nowrap">
                     {v.subtitle}
                   </span>
                   <p className="text-foreground/60 text-sm line-clamp-2 font-light flex-1">{v.description}</p>
@@ -162,7 +162,7 @@ export default function FleetServicesMarquee() {
                 </div>
                 <div className="p-4 min-h-[124px] flex flex-col">
                   <h3 className="text-base font-semibold text-[#1E1E1E]">{v.title}</h3>
-                  <span className="inline-block w-fit font-display text-[11px] font-medium uppercase tracking-[0.15em] mt-1 mb-1.5 px-2.5 py-1 rounded-md bg-primary/15 text-background border border-primary/25 shadow-sm whitespace-nowrap">
+                  <span className="inline-block w-fit font-display text-[11px] font-medium uppercase tracking-[0.15em] mt-1 mb-1.5 text-[#1E1E1E]/70 whitespace-nowrap">
                     {v.subtitle}
                   </span>
                   <p className="text-[#1E1E1E]/60 text-sm line-clamp-2 font-light flex-1">{v.description}</p>

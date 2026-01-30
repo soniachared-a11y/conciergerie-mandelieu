@@ -97,7 +97,7 @@ export default function ChauffeurRegionSection() {
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.4 }}
             >
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/20 text-primary text-xs font-medium uppercase tracking-wider border border-primary/30 mb-3">
+              <span className="inline-flex items-center gap-2 text-primary text-xs font-medium uppercase tracking-wider mb-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                 Technologie SumUp
               </span>

@@ -23,51 +23,58 @@ export default function Hero() {
         </video>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:pl-4 lg:pr-12 w-full flex justify-start">
-        <div className="max-w-xl pt-6 flex flex-col items-start text-left">
+      <div className="relative z-10 w-full pl-4 sm:pl-6 lg:pl-8 xl:pl-10 flex justify-start items-center">
+        <div className="max-w-xl pt-12 pb-12 lg:pt-16 lg:pb-16 flex flex-col items-start text-left gap-0">
           <motion.span
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-[11px] font-medium tracking-[0.2em] uppercase text-foreground/80 mb-6"
+            initial={{ opacity: 0, x: -16, y: 8 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
+            className="text-[11px] font-medium tracking-[0.2em] uppercase text-primary mb-4"
           >
             Disponible 24h/7
           </motion.span>
 
           <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.08 }}
-            className="font-display text-4xl sm:text-5xl lg:text-[3.25rem] font-light text-foreground tracking-tight leading-[1.15] mb-8 drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]"
+            initial={{ opacity: 0, filter: "blur(12px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            transition={{ duration: 0.9, delay: 0.06, ease: [0.22, 0.61, 0.36, 1] }}
+            className="flex justify-start items-center font-display text-4xl sm:text-5xl lg:text-[3.25rem] font-light text-foreground tracking-tight leading-[1.15] mb-5 drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]"
           >
             Riviera Conciergerie&nbsp;: l&apos;excellence de Mandelieu à Monaco.
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.16 }}
-            className="font-display text-base lg:text-lg text-foreground/90 font-light leading-relaxed mb-12 max-w-md drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
+            initial={{ opacity: 0, x: -16, y: 8 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.12, ease: [0.22, 0.61, 0.36, 1] }}
+            className="font-display text-base lg:text-lg text-foreground/95 font-light leading-relaxed mb-8 max-w-md drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
           >
             <span className="font-light font-display text-primary/95">Véhicules à louer</span> et{" "}
             <span className="font-light font-display text-primary/95">chauffeur privé</span> sur la Côte d&apos;Azur — sérénité et discrétion.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.24 }}
+            initial={{ opacity: 0, x: -12, y: 8 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.18, ease: [0.22, 0.61, 0.36, 1] }}
             className="flex flex-col sm:flex-row items-center gap-6"
           >
             <Link
               href="#reservation"
-              className="group inline-flex items-center gap-2.5 bg-foreground/10 hover:bg-foreground/20 border border-foreground/40 hover:border-foreground/60 text-foreground px-6 py-3 rounded-lg text-sm font-medium tracking-wide transition-all duration-300"
+              className="group relative inline-flex items-center gap-2.5 text-white text-sm font-medium tracking-wide"
             >
-              <span>Découvrir</span>
+              <span className="relative inline-block">
+                Découvrir
+                <span
+                  className="absolute bottom-0 left-0 w-full h-px bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                  aria-hidden
+                />
+              </span>
               <ArrowRight className="w-4 h-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={1.5} />
             </Link>
-            <span className="text-xs text-primary/90 tracking-wide">
-              Paiement SumUp · Devis instantané
+            <span className="text-xs tracking-wide">
+              <span className="text-primary">Paiement SumUp</span>
+              <span className="text-white"> · Devis instantané</span>
             </span>
           </motion.div>
         </div>
