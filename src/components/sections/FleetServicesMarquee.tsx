@@ -24,6 +24,18 @@ const chauffeurVehicles = [
     subtitle: "Business & Transferts",
     description: "Transferts aéroport Nice, gares, rendez-vous professionnels. Berlines et véhicules haut de gamme, 24h/7.",
   },
+  {
+    image: "/assets/images/tourisme-riviera.png",
+    title: "Tourisme",
+    subtitle: "Côte d'Azur",
+    description: "Découvrez tous les endroits pittoresques de la plus belle région de France.",
+  },
+  {
+    image: "/assets/images/shopping-bonnes-adresses.png",
+    title: "Shopping",
+    subtitle: "Bonnes adresses",
+    description: "Nos chauffeurs et ses bonnes adresses que vous ne trouverez nulle part sur Google.",
+  },
 ];
 
 // À louer (Services) — bande fond blanc

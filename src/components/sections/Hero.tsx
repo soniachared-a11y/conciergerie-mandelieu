@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import Link from "next/link";
 
 const VIDEO_SRC = "/assets/videos/hero/Tesla_Model_Y_Côte_d_Azur_Sunset.mp4";
@@ -72,6 +72,47 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
+
+      {/* Module résa format ligne — bas à droite (compact mobile, plus à droite bureau) */}
+      <motion.div
+        className="absolute bottom-4 right-4 left-4 sm:left-auto sm:bottom-6 sm:right-4 lg:right-4 xl:right-6 z-10 w-full max-w-[260px] sm:max-w-none sm:w-[400px]"
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
+        <div className="bg-background/85 backdrop-blur-md rounded-lg sm:rounded-xl border border-primary/20 shadow-lg sm:shadow-xl p-2.5 sm:p-4">
+          <p className="text-[9px] sm:text-xs font-medium text-primary/90 uppercase tracking-wider mb-1.5 sm:mb-2.5 flex items-center gap-1 sm:gap-1.5">
+            <MapPin className="w-2.5 h-2.5 sm:w-3 sm:h-3 shrink-0" strokeWidth={1.5} />
+            Réserver une course
+          </p>
+          <div className="flex flex-col sm:flex-row gap-1.5 sm:gap-2.5">
+            <input
+              type="text"
+              placeholder="Départ"
+              className="flex-1 min-w-0 px-2 py-1.5 sm:py-2 rounded-md sm:rounded-lg bg-background/90 border border-primary/20 text-foreground text-[11px] sm:text-xs placeholder:text-foreground/50 focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+              aria-label="Lieu de départ"
+            />
+            <input
+              type="text"
+              placeholder="Arrivée"
+              className="flex-1 min-w-0 px-2 py-1.5 sm:py-2 rounded-md sm:rounded-lg bg-background/90 border border-primary/20 text-foreground text-[11px] sm:text-xs placeholder:text-foreground/50 focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+              aria-label="Lieu d'arrivée"
+            />
+            <input
+              type="date"
+              className="w-full sm:w-24 shrink-0 px-2 py-1.5 sm:py-2 rounded-md sm:rounded-lg bg-background/90 border border-primary/20 text-foreground text-[11px] sm:text-xs focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+              aria-label="Date"
+            />
+            <Link
+              href="#reservation"
+              className="inline-flex items-center justify-center gap-1 sm:gap-1.5 bg-primary hover:bg-primary/90 text-background font-medium py-1.5 sm:py-2 px-3 sm:px-4 rounded-md sm:rounded-lg text-[11px] sm:text-xs transition-colors whitespace-nowrap shrink-0"
+            >
+              Devis
+              <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" strokeWidth={1.5} />
+            </Link>
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 }

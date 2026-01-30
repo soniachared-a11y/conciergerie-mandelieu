@@ -62,7 +62,7 @@ body {
   animation: scroll-infinite 48s linear infinite;
 }
 .animate-scroll-marquee-reverse {
-  animation: scroll-infinite-reverse 36s linear infinite;
+  animation: scroll-infinite-reverse 56s linear infinite;
 }
 
 /* Masque bords dégradés pour la barre */

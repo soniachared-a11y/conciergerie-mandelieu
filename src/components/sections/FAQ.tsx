@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Send } from "lucide-react";
@@ -30,8 +30,21 @@ const faqItems = [
   },
 ];
 
+const RESA_TITLES = [
+  { text: "Réserver une course", className: "text-foreground" },
+  { text: "Réserver votre chauffeur", className: "text-primary" },
+];
+
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [resaTitleIndex, setResaTitleIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setResaTitleIndex((i) => (i + 1) % RESA_TITLES.length);
+    }, 2000);
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <section
@@ -128,128 +141,125 @@ export default function FAQ() {
 
         <motion.div
           id="reservation"
-          className="relative w-full max-w-md mx-auto lg:mx-0 bg-background/60 backdrop-blur-sm rounded-2xl border border-primary/20 overflow-hidden"
+          className="relative w-full max-w-sm mx-auto lg:mx-0 lg:ml-auto lg:mr-0 bg-background/60 backdrop-blur-sm rounded-xl border border-primary/20 overflow-hidden"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="relative z-10 p-5 lg:p-6">
-            <h3 className="text-lg font-semibold text-foreground tracking-tight mb-4">
-              Réserver une course
+          <div className="relative z-10 p-4 lg:p-5">
+            <h3 className="text-base font-semibold tracking-tight mb-3 min-h-[1.5rem] flex items-center">
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.span
+                  key={resaTitleIndex}
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  transition={{ duration: 0.3 }}
+                  className={RESA_TITLES[resaTitleIndex].className}
+                >
+                  {RESA_TITLES[resaTitleIndex].text}
+                </motion.span>
+              </AnimatePresence>
             </h3>
             <form
-              className="space-y-3"
+              className="space-y-2.5"
               onSubmit={(e) => e.preventDefault()}
             >
-              <div>
-                <label htmlFor="res-nom" className="block text-xs font-medium text-foreground/90 mb-1">
-                  Nom
-                </label>
-                <input
-                  id="res-nom"
-                  type="text"
-                  name="nom"
-                  required
-                  placeholder="Votre nom"
-                  className="w-full px-3 py-2.5 rounded-lg bg-background/90 border border-primary/20 text-foreground text-sm placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors"
-                />
+              <div className="grid grid-cols-2 gap-2">
+                <div>
+                  <label htmlFor="res-nom" className="block text-[11px] font-medium text-foreground/90 mb-0.5">Nom</label>
+                  <input
+                    id="res-nom"
+                    type="text"
+                    name="nom"
+                    required
+                    placeholder="Votre nom"
+                    className="w-full px-2.5 py-2 rounded-md bg-background/90 border border-primary/20 text-foreground text-xs placeholder:text-foreground/40 focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="res-numero" className="block text-[11px] font-medium text-foreground/90 mb-0.5">Tél</label>
+                  <input
+                    id="res-numero"
+                    type="tel"
+                    name="numero"
+                    required
+                    placeholder="06 12 34 56 78"
+                    className="w-full px-2.5 py-2 rounded-md bg-background/90 border border-primary/20 text-foreground text-xs placeholder:text-foreground/40 focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+                  />
+                </div>
               </div>
               <div>
-                <label htmlFor="res-numero" className="block text-xs font-medium text-foreground/90 mb-1">
-                  Numéro de téléphone
-                </label>
-                <input
-                  id="res-numero"
-                  type="tel"
-                  name="numero"
-                  required
-                  placeholder="06 12 34 56 78"
-                  className="w-full px-3 py-2.5 rounded-lg bg-background/90 border border-primary/20 text-foreground text-sm placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors"
-                />
-              </div>
-              <div>
-                <label htmlFor="res-depart" className="block text-xs font-medium text-foreground/90 mb-1">
-                  Lieu de départ
-                </label>
+                <label htmlFor="res-depart" className="block text-[11px] font-medium text-foreground/90 mb-0.5">Départ</label>
                 <input
                   id="res-depart"
                   type="text"
                   name="depart"
                   required
                   placeholder="Mandelieu, Cannes..."
-                  className="w-full px-3 py-2.5 rounded-lg bg-background/90 border border-primary/20 text-foreground text-sm placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+                  className="w-full px-2.5 py-2 rounded-md bg-background/90 border border-primary/20 text-foreground text-xs placeholder:text-foreground/40 focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/40 transition-colors"
                 />
               </div>
               <div>
-                <label htmlFor="res-arrivee" className="block text-xs font-medium text-foreground/90 mb-1">
-                  Lieu d&apos;arrivée
-                </label>
+                <label htmlFor="res-arrivee" className="block text-[11px] font-medium text-foreground/90 mb-0.5">Arrivée</label>
                 <input
                   id="res-arrivee"
                   type="text"
                   name="arrivee"
                   required
                   placeholder="Nice, Monaco..."
-                  className="w-full px-3 py-2.5 rounded-lg bg-background/90 border border-primary/20 text-foreground text-sm placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+                  className="w-full px-2.5 py-2 rounded-md bg-background/90 border border-primary/20 text-foreground text-xs placeholder:text-foreground/40 focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/40 transition-colors"
                 />
               </div>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label htmlFor="res-date" className="block text-xs font-medium text-foreground/90 mb-1">
-                    Date
-                  </label>
+                  <label htmlFor="res-date" className="block text-[11px] font-medium text-foreground/90 mb-0.5">Date</label>
                   <input
                     id="res-date"
                     type="date"
                     name="date"
                     required
-                    className="w-full px-3 py-2.5 rounded-lg bg-background/90 border border-primary/20 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+                    className="w-full px-2.5 py-2 rounded-md bg-background/90 border border-primary/20 text-foreground text-xs focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/40 transition-colors"
                   />
                 </div>
                 <div>
-                  <label htmlFor="res-heure" className="block text-xs font-medium text-foreground/90 mb-1">
-                    Heure
-                  </label>
+                  <label htmlFor="res-heure" className="block text-[11px] font-medium text-foreground/90 mb-0.5">Heure</label>
                   <input
                     id="res-heure"
                     type="time"
                     name="heure"
                     required
-                    className="w-full px-3 py-2.5 rounded-lg bg-background/90 border border-primary/20 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+                    className="w-full px-2.5 py-2 rounded-md bg-background/90 border border-primary/20 text-foreground text-xs focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/40 transition-colors"
                   />
                 </div>
               </div>
               <div>
-                <label htmlFor="res-especes" className="block text-xs font-medium text-foreground/90 mb-1">
-                  Paiement
-                </label>
+                <label htmlFor="res-especes" className="block text-[11px] font-medium text-foreground/90 mb-0.5">Paiement</label>
                 <select
                   id="res-especes"
                   name="paiement"
-                  className="w-full px-3 py-2.5 rounded-lg bg-background/90 border border-primary/20 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+                  className="w-full px-2.5 py-2 rounded-md bg-background/90 border border-primary/20 text-foreground text-xs focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/40 transition-colors"
                 >
                   <option value="lien">Lien SumUp (CB)</option>
                   <option value="especes">Espèces à bord</option>
                 </select>
               </div>
               <div>
-                <label htmlFor="res-instructions" className="block text-xs font-medium text-foreground/90 mb-1">
-                  Instructions <span className="text-foreground/50 font-normal">(facultatif)</span>
-                </label>
+                <label htmlFor="res-instructions" className="block text-[11px] font-medium text-foreground/90 mb-0.5">Instructions <span className="text-foreground/50">(opt.)</span></label>
                 <textarea
                   id="res-instructions"
                   name="instructions"
-                  rows={2}
-                  placeholder="Bagages, passagers, animaux..."
-                  className="w-full px-3 py-2.5 rounded-lg bg-background/90 border border-primary/20 text-foreground text-sm placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors resize-none"
+                  rows={1}
+                  placeholder="Bagages, passagers..."
+                  className="w-full px-2.5 py-2 rounded-md bg-background/90 border border-primary/20 text-foreground text-xs placeholder:text-foreground/40 focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/40 transition-colors resize-none"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-background font-semibold py-3 rounded-lg text-sm transition-colors shadow-lg shadow-primary/20"
+                className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-background font-medium py-2.5 rounded-lg text-xs transition-colors shadow-md shadow-primary/20"
               >
-                <Send className="w-4 h-4 shrink-0" strokeWidth={1.5} />
+                <Send className="w-3.5 h-3.5 shrink-0" strokeWidth={1.5} />
                 Envoyer la demande
               </button>
             </form>
