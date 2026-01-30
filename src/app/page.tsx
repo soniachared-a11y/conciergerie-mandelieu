@@ -6,11 +6,9 @@ import {
   FleetServicesMarquee,
   HowItWorks,
   Stats,
-  ExperienceOnBoard,
-  CoverageMap,
+  ChauffeurRegionSection,
   BentoFeatures,
-  PaymentDemo,
-  ComparisonTable,
+  ComparisonPaymentSection,
   CheminVersExcellence,
   TestimonialsCarousel,
   FAQ,
@@ -26,13 +24,11 @@ export default function Home() {
       <PartnersMarquee />
       <ConciergerieServices />
       <FleetServicesMarquee />
-      <HowItWorks />
       <Stats />
-      <ExperienceOnBoard />
-      <CoverageMap />
+      <HowItWorks />
+      <ChauffeurRegionSection />
       <BentoFeatures />
-      <PaymentDemo />
-      <ComparisonTable />
+      <ComparisonPaymentSection />
       <CheminVersExcellence />
       <TestimonialsCarousel />
       <FAQ />

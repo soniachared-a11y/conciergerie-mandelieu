@@ -51,7 +51,7 @@ export default function Stats() {
   return (
     <section
       ref={ref}
-      className="py-12 border-y border-primary/20 bg-background/80 backdrop-blur-sm relative z-20 overflow-hidden"
+      className="py-12 border-y border-primary/20 bg-background relative z-20 overflow-hidden"
       data-section="stats"
     >
       <div className="max-w-7xl mx-auto px-6">
