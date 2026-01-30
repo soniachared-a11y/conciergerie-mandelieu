@@ -1,15 +1,23 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, MapPin } from "lucide-react";
 import Link from "next/link";
+import DatePicker from "react-datepicker";
+import { fr } from "date-fns/locale";
+import "react-datepicker/dist/react-datepicker.css";
 
 const VIDEO_SRC = "/assets/videos/hero/Tesla_Model_Y_Côte_d_Azur_Sunset.mp4";
 
 export default function Hero() {
+  const [startDate, setStartDate] = useState<Date | null>(null);
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 500], [0, 120]);
+
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-background">
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      <motion.div className="absolute inset-0 z-0 overflow-hidden" style={{ y }}>
         <video
           autoPlay
           loop
@@ -21,44 +29,35 @@ export default function Hero() {
         >
           <source src={VIDEO_SRC} type="video/mp4" />
         </video>
-      </div>
+      </motion.div>
 
       <div className="relative z-10 w-full pl-4 sm:pl-6 lg:pl-8 xl:pl-10 flex justify-start items-center">
         <div className="max-w-xl pt-12 pb-12 lg:pt-16 lg:pb-16 flex flex-col items-start text-left gap-0">
-          <motion.span
-            initial={{ opacity: 0, x: -16, y: 8 }}
-            animate={{ opacity: 1, x: 0, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
-            className="text-[11px] font-medium tracking-[0.2em] uppercase text-primary mb-4"
-          >
+          <p className="text-xs sm:text-sm tracking-[0.2em] uppercase text-primary mb-2 font-medium">
+            Votre conciergerie privée sur la Côte d&apos;Azur
+          </p>
+          <span className="text-[11px] font-medium tracking-[0.2em] uppercase text-foreground/70 mb-4">
             Disponible 24h/7
-          </motion.span>
+          </span>
 
           <motion.h1
-            initial={{ opacity: 0, filter: "blur(12px)" }}
-            animate={{ opacity: 1, filter: "blur(0px)" }}
-            transition={{ duration: 0.9, delay: 0.06, ease: [0.22, 0.61, 0.36, 1] }}
-            className="flex justify-start items-center font-display text-4xl sm:text-5xl lg:text-[3.25rem] font-light text-foreground tracking-tight leading-[1.15] mb-5 drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]"
+            initial={{ opacity: 0, x: -140, filter: "blur(8px)" }}
+            animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+            transition={{ duration: 1.2, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
+            className="flex justify-start items-center font-display text-[2.5rem] sm:text-5xl lg:text-[3.6rem] font-light text-foreground tracking-tight leading-[1.15] mb-5 drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]"
           >
             Riviera Conciergerie&nbsp;: l&apos;excellence de Mandelieu à Monaco.
           </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, x: -16, y: 8 }}
-            animate={{ opacity: 1, x: 0, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.12, ease: [0.22, 0.61, 0.36, 1] }}
-            className="font-display text-base lg:text-lg text-foreground/95 font-light leading-relaxed mb-8 max-w-md drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
-          >
+          <p className="font-display text-base lg:text-lg text-foreground/95 font-light leading-relaxed mb-2 max-w-md drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
             <span className="font-light font-display text-primary/95">Véhicules à louer</span> et{" "}
             <span className="font-light font-display text-primary/95">chauffeur privé</span> sur la Côte d&apos;Azur — sérénité et discrétion.
-          </motion.p>
+          </p>
+          <p className="text-sm font-medium text-primary drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)] mb-8">
+            Devis instantané en 30 secondes
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, x: -12, y: 8 }}
-            animate={{ opacity: 1, x: 0, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.18, ease: [0.22, 0.61, 0.36, 1] }}
-            className="flex flex-col sm:flex-row items-center gap-6"
-          >
+          <div className="flex flex-col sm:flex-row items-center gap-6">
             <Link
               href="#reservation"
               className="group relative inline-flex items-center gap-2.5 text-white text-sm font-medium tracking-wide"
@@ -76,7 +75,7 @@ export default function Hero() {
               <span className="text-primary">Paiement SumUp</span>
               <span className="text-white"> · Devis instantané</span>
             </span>
-          </motion.div>
+          </div>
         </div>
       </div>
 
@@ -105,14 +104,22 @@ export default function Hero() {
               className="flex-1 min-w-0 px-2 py-1.5 rounded-md sm:rounded-lg bg-background/80 border border-foreground/20 text-foreground text-[11px] sm:text-xs placeholder:text-foreground/50 focus:outline-none focus:ring-1 focus:ring-foreground/40 focus:border-foreground/30 transition-colors"
               aria-label="Lieu d'arrivée"
             />
-            <input
-              type="date"
-              className="w-full sm:w-24 shrink-0 px-2 py-1.5 rounded-md sm:rounded-lg bg-background/80 border border-foreground/20 text-foreground text-[11px] sm:text-xs focus:outline-none focus:ring-1 focus:ring-foreground/40 focus:border-foreground/30 transition-colors"
-              aria-label="Date"
+            <DatePicker
+              selected={startDate}
+              onChange={(date: Date | null) => setStartDate(date)}
+              showTimeSelect
+              timeIntervals={15}
+              timeCaption="Heure"
+              dateFormat="d MMMM yyyy à HH:mm"
+              locale={fr}
+              placeholderText="Date et heure"
+              className="w-full sm:w-36 shrink-0 px-2 py-1.5 rounded-md sm:rounded-lg bg-background/80 border border-foreground/20 text-foreground text-[11px] sm:text-xs focus:outline-none focus:ring-1 focus:ring-foreground/40 focus:border-foreground/30 transition-colors"
+              aria-label="Date et heure"
+              calendarClassName="!bg-background !border-foreground/20 !rounded-lg"
             />
             <Link
               href="#reservation"
-              className="inline-flex items-center justify-center gap-1 sm:gap-1.5 bg-primary/20 hover:bg-primary/30 border border-primary/40 hover:border-primary/60 text-primary px-3 sm:px-4 py-1.5 sm:py-2 rounded-md sm:rounded-lg text-[11px] sm:text-xs font-medium transition-all duration-300 whitespace-nowrap shrink-0"
+              className="inline-flex items-center justify-center gap-1 sm:gap-1.5 bg-primary/20 hover:bg-primary/30 border border-primary/40 hover:border-primary/60 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-md sm:rounded-lg text-[11px] sm:text-xs font-medium transition-all duration-300 whitespace-nowrap shrink-0"
             >
               Devis
               <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" strokeWidth={1.5} />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Phone, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -9,46 +9,64 @@ const NAV_LINKS = [
   { href: "#", label: "Accueil" },
   { href: "#vehicules", label: "Nos Véhicules" },
   { href: "#fonctionnement", label: "Comment Ça Marche" },
+  { href: "#contact", label: "Contact" },
 ];
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 bg-background/60 backdrop-blur-md border-b border-transparent">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <header
+        className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 backdrop-blur-md border-b ${
+          scrolled
+            ? "bg-background/85 shadow-lg border-foreground/10"
+            : "bg-background/60 border-transparent"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-4">
           <Link
             href="#"
-            className="group flex items-center px-2 py-1 transition-all duration-300"
+            className="group flex items-center shrink-0 min-h-[2.5rem] transition-all duration-300"
           >
-            <span className="text-2xl font-bold uppercase tracking-tighter text-foreground group-hover:text-primary transition-colors">
+            <span className="text-2xl font-bold uppercase tracking-tighter text-foreground group-hover:text-primary transition-colors leading-none">
               RIVIERA CONCIERGERIE
             </span>
           </Link>
-          <nav className="hidden md:flex items-center gap-8 bg-background/80 backdrop-blur-md border border-primary/20 rounded-full px-8 py-3 shadow-lg">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-foreground/90 hover:text-primary transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-          <a
-            href="tel:0132345465"
-            title="01.32.34.54.65"
-            aria-label="Appeler le 01.32.34.54.65"
-            className="hidden md:flex items-center justify-center w-10 h-10 bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary/50 text-primary rounded-lg transition-all duration-300"
-          >
-            <Phone className="w-4 h-4" strokeWidth={1.5} />
-          </a>
+          <div className="hidden md:flex items-center gap-4 flex-1 justify-end">
+            <nav className="flex items-center gap-8 bg-background/80 backdrop-blur-md border border-primary/20 rounded-full px-8 py-3 shadow-lg h-12 box-border">
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-medium text-foreground/90 hover:text-primary transition-colors leading-tight whitespace-nowrap"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+            <a
+              href="tel:0132345465"
+              title="01.32.34.54.65"
+              aria-label="Appeler le 01.32.34.54.65"
+              className="relative flex items-center justify-center shrink-0 w-10 h-10 bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary/50 text-primary rounded-lg transition-all duration-300"
+            >
+              <span className="absolute inset-0 rounded-lg bg-primary/30 opacity-75 animate-ping" aria-hidden />
+              <Phone className="relative w-4 h-4" strokeWidth={1.5} />
+            </a>
+          </div>
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
-            className="md:hidden text-foreground hover:text-primary transition-colors p-2"
+            className="md:hidden flex items-center justify-center shrink-0 w-10 h-10 text-foreground hover:text-primary transition-colors"
             aria-label="Ouvrir le menu"
           >
             <Menu className="w-6 h-6" strokeWidth={1.5} />

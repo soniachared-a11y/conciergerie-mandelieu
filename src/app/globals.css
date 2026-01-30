@@ -88,6 +88,11 @@ body {
   animation: scroll-infinite 60s linear infinite;
 }
 
+/* Témoignages : 2 passages puis arrêt */
+.animate-scroll-twice {
+  animation: scroll-infinite 50s linear 2 forwards;
+}
+
 /* FleetServicesMarquee : vitesses différentes pour contraste entre les deux bandes */
 .animate-scroll-marquee-slow {
   animation: scroll-infinite 48s linear infinite;
@@ -187,4 +192,42 @@ body {
 .scroll-stack-end {
   width: 100%;
   height: 1px;
+}
+
+/* React DatePicker — thème sombre et z-index hero */
+.react-datepicker-popper {
+  z-index: 100 !important;
+}
+.react-datepicker {
+  font-family: inherit !important;
+  background: var(--background) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 0.5rem !important;
+}
+.react-datepicker__header {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+.react-datepicker__current-month,
+.react-datepicker__day-name,
+.react-datepicker__day {
+  color: var(--foreground) !important;
+}
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background: var(--primary) !important;
+  color: var(--background) !important;
+}
+.react-datepicker__day:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+.react-datepicker__time-container .react-datepicker__time-box {
+  background: var(--background) !important;
+}
+.react-datepicker__time-list-item {
+  color: var(--foreground) !important;
+}
+.react-datepicker__time-list-item--selected {
+  background: var(--primary) !important;
+  color: var(--background) !important;
 }

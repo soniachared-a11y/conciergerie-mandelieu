@@ -28,10 +28,16 @@ export default function ConciergerieServices() {
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-light text-foreground leading-tight mb-6">
             Découvrez un confort et un style inégalés
           </h2>
+          <p className="text-foreground/85 text-base lg:text-lg leading-relaxed max-w-xl mb-4">
+            En 2019, après 15 ans dans l&apos;hôtellerie de luxe à Monaco, j&apos;ai créé Riviera Conciergerie avec une obsession : que mes clients vivent la Côte d&apos;Azur comme je la vis.
+          </p>
+          <p className="text-foreground/85 text-base lg:text-lg leading-relaxed max-w-xl mb-4">
+            Pas de stress. Pas d&apos;imprévu. Pas de compteur qui défile pendant que vous admirez le coucher de soleil sur la baie de Villefranche.
+          </p>
           <p className="text-foreground/85 text-base lg:text-lg leading-relaxed max-w-xl">
-            Fondée sur la passion de l&apos;excellence, Riviera Conciergerie redéfinit le voyage de luxe sur la Côte d&apos;Azur. Notre aventure a commencé avec un objectif simple : vous offrir deux expériences distinctes — la{" "}
-            <strong className="font-light font-display text-primary/95">location de voitures haut de gamme</strong> et le{" "}
-            <strong className="font-light font-display text-primary/95">chauffeur privé</strong> pour une tranquillité absolue, de Mandelieu à Monaco.
+            Juste vous, la route et la Méditerranée. Deux expériences : la{" "}
+            <strong className="font-light font-display text-primary/95">location de véhicules prestige</strong> pour une liberté totale, ou notre{" "}
+            <strong className="font-light font-display text-primary/95">chauffeur privé</strong> pour une sérénité absolue, de Mandelieu à Monaco.
           </p>
         </motion.div>
 

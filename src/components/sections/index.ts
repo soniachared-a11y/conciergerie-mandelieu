@@ -11,6 +11,7 @@ export { default as Stats } from "./Stats";
 export { default as ChauffeurRegionSection } from "./ChauffeurRegionSection";
 export { default as ExperienceOnBoard } from "./ExperienceOnBoard";
 export { default as CoverageMap } from "./CoverageMap";
+export { default as ContactSection } from "./ContactSection";
 export { default as ComparisonPaymentSection } from "./ComparisonPaymentSection";
 export { default as PaymentDemo } from "./PaymentDemo";
 export { default as ComparisonTable } from "./ComparisonTable";

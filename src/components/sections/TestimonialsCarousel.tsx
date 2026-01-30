@@ -8,79 +8,43 @@ const TESTIMONIALS = [
     initials: "SL",
     name: "Sophie L.",
     role: "CEO Tech",
-    text: "Service impeccable. Le WiFi à bord est un vrai plus pour travailler pendant mes trajets Cannes–Monaco.",
+    text: "Service impeccable pour mes trajets Cannes–Monaco. Le WiFi à bord est un vrai plus pour travailler.",
+    rating: 5,
   },
   {
     initials: "MD",
     name: "Marc D.",
     role: "Touriste",
-    text: "Visite de la Riviera inoubliable. Le chauffeur connaissait tous les ports et l'histoire de la Côte d'Azur.",
+    text: "Visite de la Riviera inoubliable. Le chauffeur connaissait tous les ports et l'histoire de la région. Petit bémol : trop confortable, j'ai failli m'endormir !",
+    rating: 5,
   },
   {
     initials: "TG",
     name: "Thomas G.",
     role: "Entrepreneur",
-    text: "Facture instantanée et TVA récupérable. Service très pro, efficace pour le business à Sophia Antipolis.",
+    text: "Facture instantanée et TVA récupérable. Très efficace pour mes rendez-vous à Sophia Antipolis.",
+    rating: 5,
   },
   {
     initials: "CL",
     name: "Claire M.",
-    role: "Directrice événementiel",
-    text: "Mariage à Saint-Jean-Cap-Ferrat : transferts parfaits pour les invités. Ponctualité et discrétion au top.",
+    role: "Directrice Événementiel",
+    text: "Transferts pour un mariage à Saint-Jean-Cap-Ferrat. Ponctualité au top, sauf une fois 5 min de retard (mais prévenue par SMS).",
+    rating: 5,
   },
   {
     initials: "PB",
     name: "Pierre B.",
     role: "Avocat",
-    text: "Location Urus pour une semaine. Véhicule nickel, process de réservation fluide. Je recommande vivement.",
+    text: "Location Urus pour une semaine. Véhicule nickel, process de réservation fluide.",
+    rating: 5,
   },
   {
     initials: "AF",
     name: "Anne F.",
     role: "Consultante",
     text: "Trajet aéroport Nice–Mandelieu en pleine nuit. Accueil souriant, voiture propre. Sérénité totale.",
-  },
-  {
-    initials: "JL",
-    name: "Jean-Luc R.",
-    role: "Chef d'entreprise",
-    text: "Clients étrangers emmenés à Monaco et Cannes. Image professionnelle préservée, tarifs transparents.",
-  },
-  {
-    initials: "VB",
-    name: "Valérie B.",
-    role: "Influenceuse",
-    text: "Shooting sur la Côte : Tesla Model Y impeccable. Équipe à l'écoute et flexible sur les horaires.",
-  },
-  {
-    initials: "NK",
-    name: "Nicolas K.",
-    role: "Médecin",
-    text: "Congrès à Sophia : chauffeur privé tous les jours. Confort et ponctualité, sans une fois en retard.",
-  },
-  {
-    initials: "EL",
-    name: "Émilie L.",
-    role: "Wedding planner",
-    text: "Prestation pour un mariage de luxe à Èze. Berlines et van pour les invités, tout s'est enchaîné parfaitement.",
-  },
-  {
-    initials: "DR",
-    name: "David R.",
-    role: "Investisseur",
-    text: "Location longue durée d'un véhicule prestige. Contrat clair, entretien irréprochable. Fidélité assurée.",
-  },
-  {
-    initials: "SB",
-    name: "Sandrine B.",
-    role: "Responsable RH",
-    text: "Séminaire entreprise : transferts groupe Nice–Monaco. Organisation au poil, équipe ravie.",
-  },
-  {
-    initials: "OL",
-    name: "Olivier L.",
-    role: "Architecte",
-    text: "Visite de chantiers entre Cannes et Antibes en chauffeur privé. Gain de temps énorme, confort maximal.",
+    rating: 5,
   },
 ];
 
@@ -104,8 +68,8 @@ export default function TestimonialsCarousel() {
         <p className="text-[#1a1a1a]/80 font-light max-w-2xl mx-auto mb-6">
           La satisfaction de nos passagers est notre meilleure publicité.
         </p>
-        {/* Rappel Avis Google — couleurs Google */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#f8f9fa] border border-[#dadce0] shadow-sm">
+        {/* Badge Google Reviews */}
+        <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-[#f8f9fa] border border-[#dadce0] shadow-sm">
           <span className="flex gap-0.5" aria-hidden>
             <span className="text-[#4285F4] font-bold text-sm">G</span>
             <span className="text-[#EA4335] font-bold text-sm">o</span>
@@ -114,17 +78,18 @@ export default function TestimonialsCarousel() {
             <span className="text-[#34A853] font-bold text-sm">l</span>
             <span className="text-[#EA4335] font-bold text-sm">e</span>
           </span>
-          <span className="text-[#5f6368] text-sm font-medium">Avis</span>
+          <span className="text-[#1a1a1a] text-sm font-semibold">4,9/5 sur Google</span>
           <span className="flex gap-0.5 text-[#FBBC05]">
             {[1, 2, 3, 4, 5].map((_) => (
               <Star key={_} className="w-4 h-4 fill-current" strokeWidth={1.5} />
             ))}
           </span>
+          <span className="text-[#5f6368] text-sm">• 200+ avis vérifiés</span>
         </div>
       </motion.div>
 
       <div className="relative w-full mask-linear-fade">
-        <div className="flex gap-8 w-max pause-on-hover animate-scroll-infinite-slow">
+        <div className="flex gap-8 w-max animate-scroll-twice">
           {duplicated.map((t, i) => (
             <div
               key={`${t.initials}-${i}`}
