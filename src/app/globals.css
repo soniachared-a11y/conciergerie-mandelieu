@@ -57,6 +57,14 @@ body {
   animation: scroll-infinite 60s linear infinite;
 }
 
+/* FleetServicesMarquee : vitesses différentes pour contraste entre les deux bandes */
+.animate-scroll-marquee-slow {
+  animation: scroll-infinite 48s linear infinite;
+}
+.animate-scroll-marquee-reverse {
+  animation: scroll-infinite-reverse 36s linear infinite;
+}
+
 /* Masque bords dégradés pour la barre */
 .mask-linear-fade {
   mask-image: linear-gradient(

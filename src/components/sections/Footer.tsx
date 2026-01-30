@@ -1,13 +1,24 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, MapPin, Instagram, Facebook, Linkedin, Lock } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer className="bg-background border-t border-primary/10 pt-20 pb-10 relative z-20">
-      <div className="max-w-7xl mx-auto px-6">
+    <footer className="bg-background border-t border-primary/10 relative z-20 overflow-hidden">
+      <div className="absolute inset-0" aria-hidden>
+        <Image
+          src="/assets/images/view-point-cote-azur.png"
+          alt=""
+          fill
+          className="object-cover object-center opacity-40"
+          sizes="100vw"
+          priority={false}
+        />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-10">
         <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">
           <div className="max-w-sm">
             <Link

@@ -67,7 +67,7 @@ export default function Stats() {
               key={s.label}
               className="flex flex-col items-center justify-center text-center"
             >
-              <span className="text-4xl md:text-5xl font-semibold text-primary tracking-tight">
+              <span className="text-4xl md:text-5xl font-light font-display text-primary/95 tracking-tight tabular-nums">
                 <AnimatedCounter
                   target={s.target}
                   suffix={s.suffix}

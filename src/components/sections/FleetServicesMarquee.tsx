@@ -4,30 +4,36 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
-// Chauffeurs à disposition (Fleet) — bande fond noir
+// Services de conciergerie — chauffeurs à disposition (bande fond noir)
 const chauffeurVehicles = [
   {
-    image: "/assets/images/vehicles/chauffeur-privee.png",
-    title: "Tesla Model Y",
-    subtitle: "Business",
-    description: "L'élégance technologique pour vos trajets vers Sophia Antipolis ou l'Aéroport de Nice.",
+    image: "/assets/images/service-cannes-lions.png",
+    title: "Événements & Festivals",
+    subtitle: "Cannes Lions",
+    description: "Chauffeur privé pour le Cannes Lions et les grands festivals. Prise en charge et dépose sur site, discrétion et ponctualité.",
   },
   {
-    image: "/assets/images/vehicles/haut-de-gamme.png",
-    title: "Rolls-Royce & Bentley",
-    subtitle: "First-Class",
-    description: "Le prestige ultime pour vos arrivées au Casino de Monte-Carlo ou au Palais des Festivals.",
+    image: "/assets/images/service-grand-prix-monaco.png",
+    title: "Grand Prix de Monaco",
+    subtitle: "Formule E & F1",
+    description: "Transferts VIP pour le Grand Prix et les événements motorsport à Monaco. Accès et logistique sur mesure.",
   },
   {
-    image: "/assets/images/vehicles/Sport.png",
-    title: "Vans XL Premium",
-    subtitle: "Logistique",
-    description: "Confort salon pour les équipages et groupes VIP sur toute la Riviera.",
+    image: "/assets/images/chauffeur-prive-cote-azur.png",
+    title: "Chauffeur privé Côte d'Azur",
+    subtitle: "Business & Transferts",
+    description: "Transferts aéroport Nice, gares, rendez-vous professionnels. Berlines et véhicules haut de gamme, 24h/7.",
   },
 ];
 
 // À louer (Services) — bande fond blanc
 const locationVehicles = [
+  {
+    image: "/assets/images/urus-yellow.png",
+    title: "Lamborghini Urus",
+    subtitle: "SUV Prestige",
+    description: "Le SUV super sport de Lamborghini. Puissance, luxe et présence sur la Côte d'Azur.",
+  },
   {
     image: "/assets/images/vehicles/range-rover-sport.png",
     title: "Range Rover Sport",
@@ -46,6 +52,24 @@ const locationVehicles = [
     subtitle: "Défenseur",
     description: "Performance et confiance maximale. Tout-terrain et carrosserie pensés pour l'exception.",
   },
+  {
+    image: "/assets/images/vehicles/mercedes-s-class.png",
+    title: "Mercedes Classe S",
+    subtitle: "Prestige",
+    description: "Berline de prestige en location. Confort, silence et élégance pour vos déplacements sur la Côte d'Azur.",
+  },
+  {
+    image: "/assets/images/vehicles/mercedes-e-class.png",
+    title: "Mercedes Classe E",
+    subtitle: "Executive",
+    description: "Berline executive à louer. Confort et discrétion pour vos trajets professionnels ou personnels.",
+  },
+  {
+    image: "/assets/images/vehicles/mercedes-v-class.png",
+    title: "Mercedes V-Class",
+    subtitle: "Van Premium",
+    description: "Van premium à louer pour groupes et familles. Spacieux, confortable et vitres teintées.",
+  },
 ];
 
 export default function FleetServicesMarquee() {
@@ -58,17 +82,17 @@ export default function FleetServicesMarquee() {
             Nos chauffeurs à disposition
           </h2>
           <p className="text-foreground/50 text-xs sm:text-sm mt-1 font-light">
-            Véhicules avec chauffeur — Business, First-Class, Logistique
+            Services de conciergerie — événements, Grand Prix, transferts
           </p>
         </div>
         <div className="relative flex overflow-hidden mask-linear-fade">
-          <div className="flex items-stretch gap-6 animate-scroll-infinite px-6" style={{ width: "max-content" }}>
+          <div className="flex items-stretch gap-6 animate-scroll-marquee-slow px-6" style={{ width: "max-content" }}>
             {[...chauffeurVehicles, ...chauffeurVehicles].map((v, i) => (
               <article
                 key={`chauffeur-${i}`}
                 className="flex-shrink-0 w-[280px] sm:w-[320px] rounded-2xl overflow-hidden border border-primary/20 bg-background/80 shadow-xl hover:border-primary/40 transition-colors"
               >
-                <div className="relative h-[180px] bg-foreground/10">
+                <div className="relative h-[140px] bg-foreground/10">
                   <Image
                     src={v.image}
                     alt={v.title}
@@ -77,16 +101,16 @@ export default function FleetServicesMarquee() {
                     sizes="320px"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
-                  <p className="absolute bottom-2 left-3 text-xs font-semibold text-primary uppercase tracking-wider">
-                    {v.subtitle}
-                  </p>
                 </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold text-foreground">{v.title}</h3>
-                  <p className="text-foreground/60 text-sm mt-1 line-clamp-3 font-light">{v.description}</p>
+                <div className="p-4 min-h-[124px] flex flex-col">
+                  <h3 className="text-base font-semibold text-foreground">{v.title}</h3>
+                  <span className="inline-block w-fit font-display text-[11px] font-medium uppercase tracking-[0.15em] mt-1 mb-1.5 px-2.5 py-1 rounded-md bg-primary/20 text-primary border border-primary/30 shadow-sm whitespace-nowrap">
+                    {v.subtitle}
+                  </span>
+                  <p className="text-foreground/60 text-sm line-clamp-2 font-light flex-1">{v.description}</p>
                   <Link
                     href="#reservation"
-                    className="mt-4 inline-flex items-center gap-2 text-primary font-medium text-sm hover:underline"
+                    className="mt-3 inline-flex items-center gap-2 text-primary font-medium text-sm hover:underline"
                   >
                     Réserver
                     <ChevronRight className="w-4 h-4" strokeWidth={1.5} />
@@ -109,13 +133,13 @@ export default function FleetServicesMarquee() {
           </p>
         </div>
         <div className="relative flex overflow-hidden mask-linear-fade">
-          <div className="flex items-stretch gap-6 animate-scroll-infinite-reverse px-6" style={{ width: "max-content" }}>
+          <div className="flex items-stretch gap-6 animate-scroll-marquee-reverse px-6" style={{ width: "max-content" }}>
             {[...locationVehicles, ...locationVehicles].map((v, i) => (
               <article
                 key={`location-${i}`}
                 className="flex-shrink-0 w-[280px] sm:w-[320px] rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-lg hover:shadow-xl transition-shadow"
               >
-                <div className="relative h-[180px] bg-gray-100">
+                <div className="relative h-[140px] bg-gray-100">
                   <Image
                     src={v.image}
                     alt={v.title}
@@ -124,13 +148,15 @@ export default function FleetServicesMarquee() {
                     sizes="320px"
                   />
                 </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold text-[#1E1E1E]">{v.title}</h3>
-                  <p className="text-primary/80 text-xs font-medium uppercase tracking-wider mt-0.5">{v.subtitle}</p>
-                  <p className="text-[#1E1E1E]/60 text-sm mt-2 line-clamp-3 font-light">{v.description}</p>
+                <div className="p-4 min-h-[124px] flex flex-col">
+                  <h3 className="text-base font-semibold text-[#1E1E1E]">{v.title}</h3>
+                  <span className="inline-block w-fit font-display text-[11px] font-medium uppercase tracking-[0.15em] mt-1 mb-1.5 px-2.5 py-1 rounded-md bg-primary/15 text-background border border-primary/25 shadow-sm whitespace-nowrap">
+                    {v.subtitle}
+                  </span>
+                  <p className="text-[#1E1E1E]/60 text-sm line-clamp-2 font-light flex-1">{v.description}</p>
                   <Link
                     href="#reservation"
-                    className="mt-4 inline-flex items-center gap-2 text-primary font-medium text-sm hover:underline"
+                    className="mt-3 inline-flex items-center gap-2 text-[#1a1a1a] font-medium text-sm hover:underline"
                   >
                     Plus d&apos;infos
                     <ChevronRight className="w-4 h-4" strokeWidth={1.5} />

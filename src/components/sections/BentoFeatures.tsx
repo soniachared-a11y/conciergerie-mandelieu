@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   User,
   MapPin,
@@ -12,8 +13,18 @@ import {
 } from "lucide-react";
 
 export default function BentoFeatures() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 0.4, 1], [80, 0, -40]);
+  const opacity = useTransform(scrollYProgress, [0, 0.25, 0.5], [0.6, 1, 1]);
+
   return (
-    <section className="py-24 bg-background relative z-20">
+    <section ref={sectionRef} className="py-24 bg-background relative z-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           className="text-center mb-12"
@@ -31,9 +42,10 @@ export default function BentoFeatures() {
 
         <motion.div
           className="max-w-5xl mx-auto rounded-3xl border border-primary/20 bg-background/95 backdrop-blur-sm overflow-hidden shadow-2xl shadow-primary/5"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          style={{ y, opacity }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false }}
           transition={{ duration: 0.5 }}
         >
           {/* Barre supérieure : heure, date, statut */}

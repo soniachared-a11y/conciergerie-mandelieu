@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, ShieldCheck, Clock } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 const VIDEO_SRC = "/assets/videos/hero/Tesla_Model_Y_Côte_d_Azur_Sunset.mp4";
@@ -23,82 +23,52 @@ export default function Hero() {
         </video>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full flex justify-start md:justify-start">
-        <div className="max-w-2xl pt-10 flex flex-col items-center text-center md:items-start md:text-left">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full flex justify-start">
+        <div className="max-w-xl pt-6 flex flex-col items-start text-left">
+          <motion.span
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-primary text-xs font-semibold uppercase tracking-wider mb-8"
+            transition={{ duration: 0.5 }}
+            className="text-[11px] font-medium tracking-[0.2em] uppercase text-foreground/80 mb-6"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            Disponible 24h/7j
-          </motion.div>
+            Disponible 24h/7
+          </motion.span>
 
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-foreground tracking-tight leading-[1.1] mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+            transition={{ duration: 0.5, delay: 0.08 }}
+            className="font-display text-4xl sm:text-5xl lg:text-[3.25rem] font-light text-foreground tracking-tight leading-[1.15] mb-8 drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]"
           >
             Riviera Conciergerie&nbsp;: l&apos;excellence de Mandelieu à Monaco.
           </motion.h1>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-display text-lg lg:text-xl text-foreground font-light leading-relaxed mb-10 max-w-lg space-y-3 drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]"
+            transition={{ duration: 0.5, delay: 0.16 }}
+            className="font-display text-base lg:text-lg text-foreground/90 font-light leading-relaxed mb-12 max-w-md drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
           >
-            <p>
-              <strong className="font-medium text-primary">Véhicules à louer</strong> — Location haut de gamme sur la Côte d&apos;Azur.
-            </p>
-            <p>
-              <strong className="font-medium text-primary">Chauffeur privé</strong> — Transport en véhicules électriques, silence et tranquillité de Mandelieu à Monaco.
-            </p>
-          </motion.div>
+            <span className="font-light font-display text-primary/95">Véhicules à louer</span> et{" "}
+            <span className="font-light font-display text-primary/95">chauffeur privé</span> sur la Côte d&apos;Azur — sérénité et discrétion.
+          </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-5"
+            transition={{ duration: 0.5, delay: 0.24 }}
+            className="flex flex-col sm:flex-row items-start gap-6"
           >
             <Link
               href="#reservation"
-              className="inline-flex justify-center items-center gap-3 bg-primary hover:bg-primary/90 text-background px-8 py-4 rounded-lg text-base font-semibold transition-all transform hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/30 shadow-lg"
+              className="group inline-flex items-center gap-2 text-foreground border border-foreground/40 hover:border-foreground/70 px-6 py-3 rounded-full text-sm font-medium tracking-wide transition-colors duration-300"
             >
-              <span>Réserver mon Expérience Riviera</span>
-              <ArrowRight className="w-5 h-5 shrink-0" strokeWidth={1.5} />
+              <span>Réserver</span>
+              <ArrowRight className="w-4 h-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={1.5} />
             </Link>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-12 flex flex-wrap gap-8 justify-center md:justify-start [text-shadow:0_2px_6px_rgba(0,0,0,0.9)]"
-          >
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-background/90 border border-primary/30 flex items-center justify-center backdrop-blur-sm">
-                <ShieldCheck className="w-5 h-5 text-primary" strokeWidth={1.5} />
-              </div>
-              <span className="text-sm font-medium text-foreground">
-                Paiement Sécurisé
-                <br />
-                SumUp
-              </span>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-background/90 border border-primary/30 flex items-center justify-center backdrop-blur-sm">
-                <Clock className="w-5 h-5 text-primary" strokeWidth={1.5} />
-              </div>
-              <span className="text-sm font-medium text-foreground">
-                Devis
-                <br />
-                Instantané
-              </span>
-            </div>
+            <span className="text-xs text-foreground/60 tracking-wide">
+              Paiement SumUp · Devis instantané
+            </span>
           </motion.div>
         </div>
       </div>

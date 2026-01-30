@@ -7,12 +7,9 @@ import {
   HowItWorks,
   Stats,
   ChauffeurRegionSection,
-  BentoFeatures,
-  ComparisonPaymentSection,
   CheminVersExcellence,
   TestimonialsCarousel,
   FAQ,
-  FinalCTA,
   Footer,
 } from "@/components/sections";
 
@@ -25,14 +22,11 @@ export default function Home() {
       <ConciergerieServices />
       <FleetServicesMarquee />
       <Stats />
-      <HowItWorks />
       <ChauffeurRegionSection />
-      <BentoFeatures />
-      <ComparisonPaymentSection />
+      <HowItWorks />
       <CheminVersExcellence />
       <TestimonialsCarousel />
       <FAQ />
-      <FinalCTA />
       <Footer />
     </div>
   );

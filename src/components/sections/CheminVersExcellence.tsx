@@ -42,8 +42,8 @@ export default function CheminVersExcellence() {
 
         <div className="absolute z-20 drop-shadow-[0_30px_30px_rgba(0,0,0,0.9)] scale-110 md:scale-125">
           <img
-            src="https://i.pinimg.com/736x/07/78/e2/0778e21205c4c247f827617246513add.jpg"
-            alt="Riviera Conciergerie"
+            src="/assets/images/tesla-prestige.png"
+            alt="Tesla Model 3 — véhicule prestige Riviera Conciergerie"
             className="object-contain brightness-75 contrast-125 grayscale-[20%] w-24 md:w-32 h-auto"
           />
         </div>

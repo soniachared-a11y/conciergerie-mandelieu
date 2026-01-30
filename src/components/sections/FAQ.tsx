@@ -1,8 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Send } from "lucide-react";
+
+const FAQ_BG = "/assets/images/footer-fleet.png";
 
 const faqItems = [
   {
@@ -32,25 +35,38 @@ export default function FAQ() {
 
   return (
     <section
-      className="py-24 bg-background relative overflow-hidden"
+      className="py-12 lg:py-16 relative overflow-hidden"
       data-section="faq"
     >
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+      {/* Image de fond — flotte prestige */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={FAQ_BG}
+          alt=""
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          priority={false}
+        />
+        <div className="absolute inset-0 bg-background/60" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
         <motion.div
-          className="space-y-12"
+          className="space-y-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="space-y-4">
+          <div className="space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-xs font-semibold uppercase tracking-wider text-primary">
               Support
             </div>
-            <h2 className="text-4xl md:text-5xl font-semibold text-foreground tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-semibold text-foreground tracking-tight">
               Questions Fréquentes
             </h2>
-            <p className="text-lg text-foreground/80 font-light">
+            <p className="text-base text-foreground/80 font-light">
               Tout ce que vous devez savoir sur votre trajet sur la Riviera.
             </p>
           </div>
@@ -64,7 +80,7 @@ export default function FAQ() {
                 <button
                   type="button"
                   onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                  className="flex items-center justify-between w-full py-6 text-left focus:outline-none group"
+                  className="flex items-center justify-between w-full py-4 text-left focus:outline-none group"
                 >
                   <span
                     className={`text-lg font-medium transition-colors duration-300 ${
@@ -99,7 +115,7 @@ export default function FAQ() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div className="pb-6 text-foreground/80 font-light leading-relaxed pr-8">
+                      <div className="pb-4 text-foreground/80 font-light leading-relaxed pr-6">
                         {item.answer}
                       </div>
                     </motion.div>
@@ -112,23 +128,22 @@ export default function FAQ() {
 
         <motion.div
           id="reservation"
-          className="relative w-full bg-primary/5 rounded-3xl border border-primary/20 overflow-hidden"
+          className="relative w-full max-w-md mx-auto lg:mx-0 bg-background/60 backdrop-blur-sm rounded-2xl border border-primary/20 overflow-hidden"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,rgba(153,255,204,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(153,255,204,0.08)_1px,transparent_1px)] bg-[size:40px_40px]" />
-          <div className="relative z-10 p-8">
-            <h3 className="text-xl font-semibold text-foreground tracking-tight mb-6">
+          <div className="relative z-10 p-5 lg:p-6">
+            <h3 className="text-lg font-semibold text-foreground tracking-tight mb-4">
               Réserver une course
             </h3>
             <form
-              className="space-y-4"
+              className="space-y-3"
               onSubmit={(e) => e.preventDefault()}
             >
               <div>
-                <label htmlFor="res-nom" className="block text-sm font-medium text-foreground/90 mb-1.5">
+                <label htmlFor="res-nom" className="block text-xs font-medium text-foreground/90 mb-1">
                   Nom
                 </label>
                 <input
@@ -137,11 +152,11 @@ export default function FAQ() {
                   name="nom"
                   required
                   placeholder="Votre nom"
-                  className="w-full px-4 py-3 rounded-lg bg-background/80 border border-primary/20 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+                  className="w-full px-3 py-2.5 rounded-lg bg-background/90 border border-primary/20 text-foreground text-sm placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors"
                 />
               </div>
               <div>
-                <label htmlFor="res-numero" className="block text-sm font-medium text-foreground/90 mb-1.5">
+                <label htmlFor="res-numero" className="block text-xs font-medium text-foreground/90 mb-1">
                   Numéro de téléphone
                 </label>
                 <input
@@ -150,11 +165,11 @@ export default function FAQ() {
                   name="numero"
                   required
                   placeholder="06 12 34 56 78"
-                  className="w-full px-4 py-3 rounded-lg bg-background/80 border border-primary/20 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+                  className="w-full px-3 py-2.5 rounded-lg bg-background/90 border border-primary/20 text-foreground text-sm placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors"
                 />
               </div>
               <div>
-                <label htmlFor="res-depart" className="block text-sm font-medium text-foreground/90 mb-1.5">
+                <label htmlFor="res-depart" className="block text-xs font-medium text-foreground/90 mb-1">
                   Lieu de départ
                 </label>
                 <input
@@ -162,12 +177,12 @@ export default function FAQ() {
                   type="text"
                   name="depart"
                   required
-                  placeholder="Adresse ou lieu (ex. Mandelieu, Cannes...)"
-                  className="w-full px-4 py-3 rounded-lg bg-background/80 border border-primary/20 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+                  placeholder="Mandelieu, Cannes..."
+                  className="w-full px-3 py-2.5 rounded-lg bg-background/90 border border-primary/20 text-foreground text-sm placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors"
                 />
               </div>
               <div>
-                <label htmlFor="res-arrivee" className="block text-sm font-medium text-foreground/90 mb-1.5">
+                <label htmlFor="res-arrivee" className="block text-xs font-medium text-foreground/90 mb-1">
                   Lieu d&apos;arrivée
                 </label>
                 <input
@@ -175,13 +190,13 @@ export default function FAQ() {
                   type="text"
                   name="arrivee"
                   required
-                  placeholder="Adresse ou lieu (ex. Nice, Monaco...)"
-                  className="w-full px-4 py-3 rounded-lg bg-background/80 border border-primary/20 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+                  placeholder="Nice, Monaco..."
+                  className="w-full px-3 py-2.5 rounded-lg bg-background/90 border border-primary/20 text-foreground text-sm placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors"
                 />
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label htmlFor="res-date" className="block text-sm font-medium text-foreground/90 mb-1.5">
+                  <label htmlFor="res-date" className="block text-xs font-medium text-foreground/90 mb-1">
                     Date
                   </label>
                   <input
@@ -189,11 +204,11 @@ export default function FAQ() {
                     type="date"
                     name="date"
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-background/80 border border-primary/20 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+                    className="w-full px-3 py-2.5 rounded-lg bg-background/90 border border-primary/20 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors"
                   />
                 </div>
                 <div>
-                  <label htmlFor="res-heure" className="block text-sm font-medium text-foreground/90 mb-1.5">
+                  <label htmlFor="res-heure" className="block text-xs font-medium text-foreground/90 mb-1">
                     Heure
                   </label>
                   <input
@@ -201,38 +216,38 @@ export default function FAQ() {
                     type="time"
                     name="heure"
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-background/80 border border-primary/20 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+                    className="w-full px-3 py-2.5 rounded-lg bg-background/90 border border-primary/20 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors"
                   />
                 </div>
               </div>
               <div>
-                <label htmlFor="res-especes" className="block text-sm font-medium text-foreground/90 mb-1.5">
+                <label htmlFor="res-especes" className="block text-xs font-medium text-foreground/90 mb-1">
                   Paiement
                 </label>
                 <select
                   id="res-especes"
                   name="paiement"
-                  className="w-full px-4 py-3 rounded-lg bg-background/80 border border-primary/20 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+                  className="w-full px-3 py-2.5 rounded-lg bg-background/90 border border-primary/20 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors"
                 >
                   <option value="lien">Lien SumUp (CB)</option>
                   <option value="especes">Espèces à bord</option>
                 </select>
               </div>
               <div>
-                <label htmlFor="res-instructions" className="block text-sm font-medium text-foreground/90 mb-1.5">
-                  Instructions supplémentaires <span className="text-foreground/50 font-normal">(facultatif)</span>
+                <label htmlFor="res-instructions" className="block text-xs font-medium text-foreground/90 mb-1">
+                  Instructions <span className="text-foreground/50 font-normal">(facultatif)</span>
                 </label>
                 <textarea
                   id="res-instructions"
                   name="instructions"
-                  rows={3}
-                  placeholder="Bagages, nombre de passagers, animaux, etc."
-                  className="w-full px-4 py-3 rounded-lg bg-background/80 border border-primary/20 text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors resize-none"
+                  rows={2}
+                  placeholder="Bagages, passagers, animaux..."
+                  className="w-full px-3 py-2.5 rounded-lg bg-background/90 border border-primary/20 text-foreground text-sm placeholder:text-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/40 transition-colors resize-none"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-background font-semibold py-3.5 rounded-lg transition-colors shadow-lg shadow-primary/20"
+                className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-background font-semibold py-3 rounded-lg text-sm transition-colors shadow-lg shadow-primary/20"
               >
                 <Send className="w-4 h-4 shrink-0" strokeWidth={1.5} />
                 Envoyer la demande
