@@ -2,6 +2,8 @@ export { default as Header } from "./Header";
 export { default as Hero } from "./Hero";
 export { default as PartnersMarquee } from "./PartnersMarquee";
 export { default as ConciergerieServices } from "./ConciergerieServices";
+export { default as ScrollStackSection } from "./ScrollStackSection";
+export { default as FleetServicesMarquee } from "./FleetServicesMarquee";
 export { default as Services } from "./Services";
 export { default as HowItWorks } from "./HowItWorks";
 export { default as Fleet } from "./Fleet";

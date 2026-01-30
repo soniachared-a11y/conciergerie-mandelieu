@@ -39,6 +39,20 @@ body {
   animation: scroll-infinite 20s linear infinite;
 }
 
+/* Même allure, sens inverse (gauche → droite) pour contraste visuel */
+@keyframes scroll-infinite-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-infinite-reverse {
+  animation: scroll-infinite-reverse 20s linear infinite;
+}
+
 .animate-scroll-infinite-slow {
   animation: scroll-infinite 60s linear infinite;
 }
@@ -100,4 +114,38 @@ body {
 .route-line-neon {
   stroke-dasharray: 100;
   animation: draw-route-neon 3s ease-in-out infinite;
+}
+
+/* ScrollStack : pile de cartes au scroll */
+.scroll-stack-scroller {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: visible;
+}
+
+.scroll-stack-inner {
+  padding: 20vh 1.5rem 50rem;
+  min-height: 100vh;
+}
+
+.scroll-stack-card {
+  transform-origin: top center;
+  will-change: transform, filter;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+  min-height: 20rem;
+  width: 100%;
+  margin: 30px 0;
+  padding: 0;
+  border-radius: 1.5rem;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-stack-end {
+  width: 100%;
+  height: 1px;
 }

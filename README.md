@@ -1,8 +1,17 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Démarrage
+
+**Important :** lancez les commandes **depuis le dossier du projet** (`conciergerie-mandelieu`), pas depuis votre dossier personnel.
+
+```bash
+cd /Users/evolunia/conciergerie-mandelieu
+npm run dev
+```
+
 ## Getting Started
 
-First, run the development server:
+First, run the development server (from the project directory):
 
 ```bash
 npm run dev

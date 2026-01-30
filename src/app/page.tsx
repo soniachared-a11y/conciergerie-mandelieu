@@ -3,9 +3,8 @@ import {
   Hero,
   PartnersMarquee,
   ConciergerieServices,
-  Services,
+  FleetServicesMarquee,
   HowItWorks,
-  Fleet,
   Stats,
   ExperienceOnBoard,
   CoverageMap,
@@ -26,9 +25,8 @@ export default function Home() {
       <Hero />
       <PartnersMarquee />
       <ConciergerieServices />
-      <Services />
+      <FleetServicesMarquee />
       <HowItWorks />
-      <Fleet />
       <Stats />
       <ExperienceOnBoard />
       <CoverageMap />
