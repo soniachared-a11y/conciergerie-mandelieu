@@ -36,10 +36,10 @@ export default function HowItWorks() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-primary font-medium tracking-wide text-xs uppercase mb-3 block">
+          <span className="font-display text-[11px] font-medium uppercase tracking-[0.2em] text-primary/90 mb-4 block">
             Simplicité Absolue
           </span>
-          <h2 className="text-3xl lg:text-5xl font-semibold text-[#1E1E1E] tracking-tight mb-6">
+          <h2 className="font-display text-3xl lg:text-5xl font-light text-[#1a1a1a] tracking-tight mb-6">
             Votre Réservation en 3 Étapes
           </h2>
         </motion.div>
@@ -69,7 +69,7 @@ export default function HowItWorks() {
                   className="w-10 h-10 text-primary"
                   strokeWidth={1.5}
                 />
-                <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-[#1E1E1E] font-bold text-sm shadow-lg">
+                <div className="absolute -top-2 -right-2 w-8 h-8 bg-white border border-[#1E1E1E]/20 rounded-full flex items-center justify-center text-[#1a1a1a] font-display font-light text-sm shadow-md">
                   {i + 1}
                 </div>
               </div>

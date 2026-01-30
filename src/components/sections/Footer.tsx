@@ -36,21 +36,21 @@ export default function Footer() {
             <div className="flex gap-4">
               <a
                 href="#"
-                className="w-8 h-8 rounded-full bg-foreground/10 flex items-center justify-center text-foreground/70 hover:text-primary hover:bg-foreground/20 transition-colors"
+                className="w-8 h-8 rounded-full bg-foreground/10 flex items-center justify-center text-[#E4405F] hover:bg-foreground/20 transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="w-4 h-4" strokeWidth={1.5} />
               </a>
               <a
                 href="#"
-                className="w-8 h-8 rounded-full bg-foreground/10 flex items-center justify-center text-foreground/70 hover:text-primary hover:bg-foreground/20 transition-colors"
+                className="w-8 h-8 rounded-full bg-foreground/10 flex items-center justify-center text-[#1877F2] hover:bg-foreground/20 transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook className="w-4 h-4" strokeWidth={1.5} />
               </a>
               <a
                 href="#"
-                className="w-8 h-8 rounded-full bg-foreground/10 flex items-center justify-center text-foreground/70 hover:text-primary hover:bg-foreground/20 transition-colors"
+                className="w-8 h-8 rounded-full bg-foreground/10 flex items-center justify-center text-[#0A66C2] hover:bg-foreground/20 transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-4 h-4" strokeWidth={1.5} />
