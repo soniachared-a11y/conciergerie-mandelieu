@@ -112,15 +112,15 @@ export default function FAQ() {
                   <div
                     className={`w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300 ${
                       openIndex === i
-                        ? "bg-primary text-background"
-                        : "bg-primary/20 text-foreground/80 group-hover:bg-primary/30"
+                        ? "bg-primary text-background border border-primary/40 shadow-md shadow-primary/25"
+                        : "bg-primary/10 border border-primary/20 text-foreground/80 group-hover:bg-primary/20 group-hover:border-primary/30"
                     }`}
                   >
                     <Plus
                       className={`w-4 h-4 transition-transform duration-300 ${
                         openIndex === i ? "rotate-45" : ""
                       }`}
-                      strokeWidth={2}
+                      strokeWidth={1.75}
                     />
                   </div>
                 </button>
@@ -287,7 +287,7 @@ export default function FAQ() {
               </div>
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-background font-medium py-2.5 rounded-lg text-xs transition-colors shadow-md shadow-primary/20"
+                className="w-full flex items-center justify-center gap-2.5 bg-primary hover:bg-primary/90 text-background font-display font-light py-3 rounded-xl text-xs uppercase tracking-[0.12em] transition-all duration-300 shadow-lg shadow-primary/15 hover:shadow-primary/25"
               >
                 <Send className="w-3.5 h-3.5 shrink-0" strokeWidth={1.5} />
                 Envoyer la demande

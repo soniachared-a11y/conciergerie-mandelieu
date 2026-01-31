@@ -68,8 +68,8 @@ export default function ChauffeurRegionSection() {
       data-section="chauffeur-region"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[85vh]">
-        {/* Gauche : titre + paragraphe (L'Excellence à Votre Service) + mockup + tableau de comparaison */}
-        <div className="relative flex flex-col items-center justify-center p-6 lg:p-10 order-2 lg:order-1 min-h-0 sm:min-h-[420px] lg:min-h-[85vh]">
+        {/* Gauche : fond blanc, écriture noire — titre + paragraphe + mockup + VOTRE FORMULE */}
+        <div className="relative flex flex-col items-center justify-center p-6 lg:p-10 order-2 lg:order-1 min-h-0 sm:min-h-[420px] lg:min-h-[85vh] bg-white">
           <div className="relative flex flex-col items-center w-full max-w-[280px] sm:max-w-none">
             {/* Titre et paragraphe — L'Excellence à Votre Service */}
             <motion.div
@@ -79,13 +79,13 @@ export default function ChauffeurRegionSection() {
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.4 }}
             >
-              <h2 className="text-2xl lg:text-3xl font-light text-foreground tracking-tight mb-3 font-display">
+              <h2 className="text-2xl lg:text-3xl font-light text-[#1a1a1a] tracking-tight mb-3 font-display">
                 L&apos;Excellence à Votre Service
               </h2>
-              <p className="text-foreground/85 text-sm lg:text-base font-light leading-relaxed">
+              <p className="text-[#1a1a1a]/90 text-sm lg:text-base font-light leading-relaxed">
                 Deux solutions premium pour votre expérience sur la Côte d&apos;Azur : la{" "}
-                <strong className="font-light font-display text-primary/95">location de véhicules prestige</strong> pour une liberté totale, ou notre{" "}
-                <strong className="font-light font-display text-primary/95">chauffeur privé</strong> pour une sérénité absolue. Quel que soit votre choix, nous garantissons tarifs transparents, véhicules haut de gamme et un paiement sécurisé instantané via SumUp — sans surprise, sans attente.
+                <strong className="font-semibold font-display text-primary">location de véhicules prestige</strong> pour une liberté totale, ou notre{" "}
+                <strong className="font-semibold font-display text-primary">chauffeur privé</strong> pour une sérénité absolue. Quel que soit votre choix, nous garantissons tarifs transparents, véhicules haut de gamme et un paiement sécurisé instantané via SumUp — sans surprise, sans attente.
               </p>
             </motion.div>
 
@@ -101,10 +101,10 @@ export default function ChauffeurRegionSection() {
               >
                 <span className="inline-flex items-center gap-2 text-primary text-xs font-medium uppercase tracking-wider mb-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  Technologie SumUp
+                  Paiement sécurisé
                 </span>
-                <p className="text-foreground/80 text-xs sm:text-sm font-light mb-4 text-center">
-                  Paiement sécurisé — réglez en toute confiance.
+                <p className="text-[#1a1a1a]/80 text-xs sm:text-sm font-light mb-4 text-center">
+                  Réglez en toute confiance, à bord ou à distance.
                 </p>
                 <div className="relative w-[200px] h-[360px] sm:w-[220px] sm:h-[400px] bg-background border-4 border-primary/30 rounded-[1.4rem] shadow-2xl shadow-primary/10 overflow-hidden transform rotate-2 hover:rotate-0 transition-transform duration-500">
                   <div className="absolute top-0 w-full h-4 bg-background z-20 flex items-center justify-center pt-1">
@@ -167,9 +167,9 @@ export default function ChauffeurRegionSection() {
                     </button>
                   </div>
                 </div>
-                <Link href="tel:0132345465" className="text-primary font-medium text-xs hover:underline mt-3">
-                  Essayez maintenant
-                </Link>
+<Link href="tel:0132345465" className="text-[#1a1a1a] font-medium text-xs hover:underline mt-3">
+                Essayez maintenant
+              </Link>
               </motion.div>
 
               {/* VOTRE FORMULE : bureau/tablette = carte plus bas à côté du mockup, mobile = menu déroulant */}
