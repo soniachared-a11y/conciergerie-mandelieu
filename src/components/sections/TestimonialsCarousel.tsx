@@ -61,7 +61,7 @@ export default function TestimonialsCarousel() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-3xl lg:text-4xl font-semibold text-[#1a1a1a] tracking-tight mb-4">
+        <h2 className="font-display text-3xl lg:text-4xl font-light text-[#1a1a1a] tracking-tight mb-4">
           Ce que nos Clients Disent
         </h2>
         <div className="w-20 h-1 bg-primary mx-auto rounded-full opacity-70 mb-6" />

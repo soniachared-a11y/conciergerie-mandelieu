@@ -117,8 +117,55 @@ export default function FleetServicesMarquee() {
 
   return (
     <section id="vehicules" className="relative z-20" data-section="fleet-services">
-      {/* Bande 1 : À louer — fond blanc, en premier (emplacement rétabli) */}
-      <div className="py-12 sm:py-14 bg-white overflow-hidden">
+      {/* Bande 1 : Nos chauffeurs à disposition — fond sombre */}
+      <div className="py-12 sm:py-14 bg-background overflow-hidden">
+        <div className="mb-6 px-6">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-foreground tracking-tight font-display">
+            Nos chauffeurs à disposition
+          </h2>
+          <p className="text-foreground/50 text-xs sm:text-sm mt-1 font-light">
+            Services de conciergerie — événements, Grand Prix, transferts
+          </p>
+        </div>
+        <div className="relative flex overflow-hidden mask-linear-fade">
+          <div className="flex items-stretch gap-6 animate-scroll-marquee-slow px-6" style={{ width: "max-content" }}>
+            {[...chauffeurVehicles, ...chauffeurVehicles].map((v, i) => (
+              <article
+                key={`chauffeur-${i}`}
+                className="flex-shrink-0 w-[280px] sm:w-[320px] rounded-2xl overflow-hidden border border-primary/20 bg-background/80 shadow-xl hover:border-primary/40 transition-colors"
+              >
+                <div className="relative h-[140px] bg-foreground/10">
+                  <Image
+                    src={v.image}
+                    alt={v.title}
+                    fill
+                    className="object-cover"
+                    sizes="320px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
+                </div>
+                <div className="p-4 min-h-[124px] flex flex-col">
+                  <h3 className="text-base font-semibold text-foreground">{v.title}</h3>
+                  <span className="inline-block w-fit font-display text-[11px] font-medium uppercase tracking-[0.15em] mt-1 mb-1.5 text-primary/90 whitespace-nowrap">
+                    {v.subtitle}
+                  </span>
+                  <p className="text-foreground/60 text-sm line-clamp-2 font-light flex-1">{v.description}</p>
+                  <Link
+                    href="#reservation"
+                    className="mt-3 inline-flex items-center gap-2 text-primary font-medium text-sm hover:underline"
+                  >
+                    Réserver
+                    <ChevronRight className="w-4 h-4" strokeWidth={1.5} />
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Bande 2 : À louer — fond blanc, bordure de séparation */}
+      <div className="py-12 sm:py-14 bg-white overflow-hidden border-t border-gray-200/80">
         <div className="mb-6 px-6">
           <h2 className="text-2xl sm:text-3xl font-semibold text-[#1E1E1E] tracking-tight font-display">
             À louer
@@ -170,53 +217,6 @@ export default function FleetServicesMarquee() {
                     className="mt-3 inline-flex items-center gap-2 text-[#1a1a1a] font-medium text-sm hover:underline"
                   >
                     Plus d&apos;infos
-                    <ChevronRight className="w-4 h-4" strokeWidth={1.5} />
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Bande 2 : Nos chauffeurs à disposition — fond sombre, bordure de séparation */}
-      <div className="py-12 sm:py-14 bg-background overflow-hidden border-t border-gray-200/80">
-        <div className="mb-6 px-6">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-foreground tracking-tight font-display">
-            Nos chauffeurs à disposition
-          </h2>
-          <p className="text-foreground/50 text-xs sm:text-sm mt-1 font-light">
-            Services de conciergerie — événements, Grand Prix, transferts
-          </p>
-        </div>
-        <div className="relative flex overflow-hidden mask-linear-fade">
-          <div className="flex items-stretch gap-6 animate-scroll-marquee-slow px-6" style={{ width: "max-content" }}>
-            {[...chauffeurVehicles, ...chauffeurVehicles].map((v, i) => (
-              <article
-                key={`chauffeur-${i}`}
-                className="flex-shrink-0 w-[280px] sm:w-[320px] rounded-2xl overflow-hidden border border-primary/20 bg-background/80 shadow-xl hover:border-primary/40 transition-colors"
-              >
-                <div className="relative h-[140px] bg-foreground/10">
-                  <Image
-                    src={v.image}
-                    alt={v.title}
-                    fill
-                    className="object-cover"
-                    sizes="320px"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
-                </div>
-                <div className="p-4 min-h-[124px] flex flex-col">
-                  <h3 className="text-base font-semibold text-foreground">{v.title}</h3>
-                  <span className="inline-block w-fit font-display text-[11px] font-medium uppercase tracking-[0.15em] mt-1 mb-1.5 text-primary/90 whitespace-nowrap">
-                    {v.subtitle}
-                  </span>
-                  <p className="text-foreground/60 text-sm line-clamp-2 font-light flex-1">{v.description}</p>
-                  <Link
-                    href="#reservation"
-                    className="mt-3 inline-flex items-center gap-2 text-primary font-medium text-sm hover:underline"
-                  >
-                    Réserver
                     <ChevronRight className="w-4 h-4" strokeWidth={1.5} />
                   </Link>
                 </div>

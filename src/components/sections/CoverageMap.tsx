@@ -30,7 +30,6 @@ export default function CoverageMap() {
           sizes="100vw"
           priority={false}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/40 to-transparent z-[1]" />
       </div>
 
       {/* Ligne animée type néon : fil fluide entre les points */}
@@ -109,7 +108,6 @@ export default function CoverageMap() {
           </div>
         </div>
       </motion.div>
-
     </section>
   );
 }

@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Send } from "lucide-react";
+import DatePicker from "react-datepicker";
+import { fr } from "date-fns/locale";
+import "react-datepicker/dist/react-datepicker.css";
 
 const FAQ_BG = "/assets/images/footer-fleet.png";
 
@@ -38,6 +41,8 @@ const RESA_TITLES = [
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [resaTitleIndex, setResaTitleIndex] = useState(0);
+  const [resDate, setResDate] = useState<Date | null>(null);
+  const [resTime, setResTime] = useState<Date | null>(null);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -73,10 +78,10 @@ export default function FAQ() {
           transition={{ duration: 0.6 }}
         >
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-xs font-semibold uppercase tracking-wider text-primary">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/20 border border-primary/30 font-display text-xs font-medium uppercase tracking-wider text-primary">
               Support
             </div>
-            <h2 className="text-3xl md:text-4xl font-semibold text-foreground tracking-tight">
+            <h2 className="font-display text-3xl md:text-4xl font-light text-foreground tracking-tight">
               Questions Fréquentes
             </h2>
             <p className="text-base text-foreground/80 font-light">
@@ -215,22 +220,47 @@ export default function FAQ() {
               <div className="grid grid-cols-2 gap-2">
                 <div>
                   <label htmlFor="res-date" className="block text-[11px] font-medium text-foreground/90 mb-0.5">Date</label>
-                  <input
+                  <DatePicker
                     id="res-date"
-                    type="date"
-                    name="date"
-                    required
+                    selected={resDate}
+                    onChange={(date: Date | null) => setResDate(date)}
+                    locale={fr}
+                    dateFormat="d MMMM yyyy"
+                    placeholderText="Choisir une date"
                     className="w-full px-2.5 py-2 rounded-md bg-background/90 border border-primary/20 text-foreground text-xs focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+                    calendarClassName="!bg-background !border-primary/20 !rounded-lg"
+                    required
+                  />
+                  <input
+                    type="hidden"
+                    name="date"
+                    value={resDate ? resDate.toISOString().split("T")[0] : ""}
+                    aria-hidden
                   />
                 </div>
                 <div>
                   <label htmlFor="res-heure" className="block text-[11px] font-medium text-foreground/90 mb-0.5">Heure</label>
-                  <input
+                  <DatePicker
                     id="res-heure"
-                    type="time"
-                    name="heure"
-                    required
+                    selected={resTime}
+                    onChange={(date: Date | null) => setResTime(date)}
+                    showTimeSelectOnly
+                    showTimeSelect
+                    timeIntervals={15}
+                    timeCaption="Heure"
+                    timeFormat="HH:mm"
+                    dateFormat="HH:mm"
+                    locale={fr}
+                    placeholderText="Choisir l'heure"
                     className="w-full px-2.5 py-2 rounded-md bg-background/90 border border-primary/20 text-foreground text-xs focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/40 transition-colors"
+                    calendarClassName="!bg-background !border-primary/20 !rounded-lg"
+                    required
+                  />
+                  <input
+                    type="hidden"
+                    name="heure"
+                    value={resTime ? `${String(resTime.getHours()).padStart(2, "0")}:${String(resTime.getMinutes()).padStart(2, "0")}` : ""}
+                    aria-hidden
                   />
                 </div>
               </div>

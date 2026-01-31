@@ -4,13 +4,12 @@ import {
   PartnersMarquee,
   ConciergerieServices,
   FleetServicesMarquee,
+  ChauffeurRegionSection,
   Stats,
   CheminVersExcellence,
-  CoverageMap,
   HowItWorks,
   TestimonialsCarousel,
   FAQ,
-  ContactSection,
   Footer,
 } from "@/components/sections";
 
@@ -22,13 +21,12 @@ export default function Home() {
       <PartnersMarquee />
       <ConciergerieServices />
       <FleetServicesMarquee />
+      <HowItWorks />
+      <ChauffeurRegionSection />
       <Stats />
       <CheminVersExcellence />
-      <CoverageMap />
-      <HowItWorks />
       <TestimonialsCarousel />
       <FAQ />
-      <ContactSection />
       <Footer />
     </div>
   );

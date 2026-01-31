@@ -89,125 +89,130 @@ export default function ChauffeurRegionSection() {
               </p>
             </motion.div>
 
-            {/* Mockup téléphone */}
-            <motion.div
-              className="flex flex-col items-center"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.4 }}
-            >
-              <span className="inline-flex items-center gap-2 text-primary text-xs font-medium uppercase tracking-wider mb-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                Technologie SumUp
-              </span>
-              <p className="text-foreground/80 text-xs sm:text-sm font-light mb-4 text-center">
-                Paiement sécurisé — réglez en toute confiance.
-              </p>
-              <div className="relative w-[200px] h-[360px] sm:w-[220px] sm:h-[400px] bg-background border-4 border-primary/30 rounded-[1.4rem] shadow-2xl shadow-primary/10 overflow-hidden transform rotate-2 hover:rotate-0 transition-transform duration-500">
-                <div className="absolute top-0 w-full h-4 bg-background z-20 flex items-center justify-center pt-1">
-                  <span className="text-[9px] text-foreground font-bold">9:41</span>
-                </div>
-                <div className="w-full h-full pt-5 px-3 flex flex-col items-center relative overflow-hidden">
-                  <div className="absolute inset-0 z-0">
-                    <Image
-                      src={COVERAGE_BG}
-                      alt="Côte d'Azur — Mandelieu à Monaco"
-                      fill
-                      className="object-cover object-center"
-                      sizes="260px"
-                      priority={false}
-                    />
-                    <div className="absolute inset-0 bg-background/85" />
+            {/* Mockup + VOTRE FORMULE : bureau = côte à côte, mobile = menu déroulant en dessous */}
+            <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-4 lg:gap-6">
+              {/* Mockup téléphone */}
+              <motion.div
+                className="flex flex-col items-center shrink-0"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.4 }}
+              >
+                <span className="inline-flex items-center gap-2 text-primary text-xs font-medium uppercase tracking-wider mb-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Technologie SumUp
+                </span>
+                <p className="text-foreground/80 text-xs sm:text-sm font-light mb-4 text-center">
+                  Paiement sécurisé — réglez en toute confiance.
+                </p>
+                <div className="relative w-[200px] h-[360px] sm:w-[220px] sm:h-[400px] bg-background border-4 border-primary/30 rounded-[1.4rem] shadow-2xl shadow-primary/10 overflow-hidden transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                  <div className="absolute top-0 w-full h-4 bg-background z-20 flex items-center justify-center pt-1">
+                    <span className="text-[9px] text-foreground font-bold">9:41</span>
                   </div>
-                  <motion.div
-                    className="relative z-10 flex flex-col items-center mb-2"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-10%" }}
-                    variants={{
-                      visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
-                      hidden: {},
-                    }}
-                  >
+                  <div className="w-full h-full pt-5 px-3 flex flex-col items-center relative overflow-hidden">
+                    <div className="absolute inset-0 z-0">
+                      <Image
+                        src={COVERAGE_BG}
+                        alt="Côte d'Azur — Mandelieu à Monaco"
+                        fill
+                        className="object-cover object-center"
+                        sizes="260px"
+                        priority={false}
+                      />
+                      <div className="absolute inset-0 bg-background/85" />
+                    </div>
                     <motion.div
-                      className="relative w-7 h-7 rounded-lg bg-primary/20 flex items-center justify-center mb-1"
+                      className="relative z-10 flex flex-col items-center mb-2"
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, margin: "-10%" }}
                       variants={{
-                        hidden: { scale: 0, opacity: 0 },
-                        visible: { scale: 1, opacity: 1, transition: { type: "spring", stiffness: 300, damping: 22 } },
+                        visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
+                        hidden: {},
                       }}
                     >
-                      <Check className="w-4 h-4 text-primary" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
+                      <motion.div
+                        className="relative w-7 h-7 rounded-lg bg-primary/20 flex items-center justify-center mb-1"
+                        variants={{
+                          hidden: { scale: 0, opacity: 0 },
+                          visible: { scale: 1, opacity: 1, transition: { type: "spring", stiffness: 300, damping: 22 } },
+                        }}
+                      >
+                        <Check className="w-4 h-4 text-primary" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
+                      </motion.div>
+                      <motion.span className="relative z-10 text-foreground text-xs font-semibold mb-0.5" variants={{ hidden: { opacity: 0, y: 6 }, visible: { opacity: 1, y: 0 } }}>
+                        Paiement Réussi
+                      </motion.span>
+                      <motion.span className="relative z-10 text-foreground/60 text-[10px] mb-0.5" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}>
+                        Transaction #83921
+                      </motion.span>
+                      <motion.span className="relative z-10 text-lg font-bold text-foreground" variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1 } }}>
+                        55,00 €
+                      </motion.span>
                     </motion.div>
-                    <motion.span className="relative z-10 text-foreground text-xs font-semibold mb-0.5" variants={{ hidden: { opacity: 0, y: 6 }, visible: { opacity: 1, y: 0 } }}>
-                      Paiement Réussi
-                    </motion.span>
-                    <motion.span className="relative z-10 text-foreground/60 text-[10px] mb-0.5" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}>
-                      Transaction #83921
-                    </motion.span>
-                    <motion.span className="relative z-10 text-lg font-bold text-foreground" variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1 } }}>
-                      55,00 €
-                    </motion.span>
-                  </motion.div>
-                  <span className="relative z-10 text-foreground/60 text-[10px] mb-3 text-center">Riviera Conciergerie - Course</span>
-                  <div className="relative z-10 w-full py-1.5 border-t border-primary/20 flex justify-between text-[10px]">
-                    <span className="text-foreground/70">Paiement</span>
-                    <span className="text-foreground flex items-center gap-1">
-                      <CreditCard className="w-2.5 h-2.5" strokeWidth={1.5} />
-                      Visa •••• 4242
-                    </span>
+                    <span className="relative z-10 text-foreground/60 text-[10px] mb-3 text-center">Riviera Conciergerie - Course</span>
+                    <div className="relative z-10 w-full py-1.5 border-t border-primary/20 flex justify-between text-[10px]">
+                      <span className="text-foreground/70">Paiement</span>
+                      <span className="text-foreground flex items-center gap-1">
+                        <CreditCard className="w-2.5 h-2.5" strokeWidth={1.5} />
+                        Visa •••• 4242
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      className="relative z-10 mt-auto mb-3 w-full bg-primary text-background py-1.5 rounded-lg font-medium text-[10px]"
+                    >
+                      Télécharger le reçu
+                    </button>
                   </div>
+                </div>
+                <Link href="tel:0132345465" className="text-primary font-medium text-xs hover:underline mt-3">
+                  Essayez maintenant
+                </Link>
+              </motion.div>
+
+              {/* VOTRE FORMULE : bureau/tablette = carte plus bas à côté du mockup, mobile = menu déroulant */}
+              <div className="w-full max-w-[200px] lg:max-w-[200px] lg:w-[200px] lg:shrink-0 lg:self-end">
+                {/* Mobile / tablette : menu déroulant en dessous du mockup */}
+                <div className="lg:hidden">
                   <button
                     type="button"
-                    className="relative z-10 mt-auto mb-3 w-full bg-primary text-background py-1.5 rounded-lg font-medium text-[10px]"
+                    onClick={() => setFormuleOpen((o) => !o)}
+                    className="w-full flex items-center justify-between gap-2 rounded-xl border border-primary/25 bg-background/98 backdrop-blur-md shadow-lg shadow-primary/10 px-3 py-2.5 text-left"
+                    aria-expanded={formuleOpen}
                   >
-                    Télécharger le reçu
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-foreground/70">Votre formule</span>
+                    <ChevronDown className={`w-4 h-4 text-foreground/70 flex-shrink-0 transition-transform duration-200 ${formuleOpen ? "rotate-180" : ""}`} strokeWidth={2} />
                   </button>
+                  <AnimatePresence>
+                    {formuleOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="rounded-b-xl border border-t-0 border-primary/25 bg-background/98 backdrop-blur-md shadow-lg shadow-primary/10 p-2.5 -mt-px">
+                          <FormuleCardContent />
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
+                {/* Bureau (lg+) : carte à côté du mockup */}
+                <motion.div
+                  className="hidden lg:block w-full rounded-xl border border-primary/25 bg-background/98 backdrop-blur-md shadow-lg shadow-primary/10 p-3"
+                  initial={{ opacity: 0, x: -8 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-20px" }}
+                  transition={{ duration: 0.35, delay: 0.2 }}
+                >
+                  <FormuleCardContent />
+                </motion.div>
               </div>
-              <Link href="tel:0132345465" className="text-primary font-medium text-xs hover:underline mt-3">
-                Essayez maintenant
-              </Link>
-            </motion.div>
-
-            {/* Mobile : tableau comparaison en menu déroulant */}
-            <div className="sm:hidden relative mt-4 w-full max-w-[200px] mx-auto">
-              <button
-                type="button"
-                onClick={() => setFormuleOpen((o) => !o)}
-                className="w-full flex items-center justify-between gap-2 rounded-xl border border-primary/25 bg-background/98 backdrop-blur-md shadow-lg shadow-primary/10 px-3 py-2.5 text-left"
-                aria-expanded={formuleOpen}
-              >
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-foreground/70">Votre formule</span>
-                <ChevronDown className={`w-4 h-4 text-foreground/70 flex-shrink-0 transition-transform duration-200 ${formuleOpen ? "rotate-180" : ""}`} strokeWidth={2} />
-              </button>
-              <AnimatePresence>
-                {formuleOpen && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.25, ease: "easeInOut" }}
-                    className="overflow-hidden"
-                  >
-                    <div className="rounded-b-xl border border-t-0 border-primary/25 bg-background/98 backdrop-blur-md shadow-lg shadow-primary/10 p-2.5 -mt-px">
-                      <FormuleCardContent />
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
-
-            {/* Desktop : tableau comparaison en carte (popup) */}
-            <motion.div
-              className="hidden sm:block absolute right-0 bottom-0 lg:right-4 lg:bottom-4 w-[200px] rounded-xl border border-primary/25 bg-background/98 backdrop-blur-md shadow-lg shadow-primary/10 p-3 z-10"
-              initial={{ opacity: 0, scale: 0.92, y: 4 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true, margin: "-20px" }}
-              transition={{ duration: 0.35, delay: 0.2 }}
-            >
-              <FormuleCardContent />
-            </motion.div>
           </div>
         </div>
 
