@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Phone, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const LOGO_SRC = "/assets/images/Gemini_Generated_Image_vladnfvladnfvlad-removebg-preview.png";
+
 const NAV_LINKS = [
   { href: "#", label: "Accueil" },
   { href: "#vehicules", label: "Nos Véhicules" },
@@ -26,51 +28,41 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 backdrop-blur-md border-b ${
+        className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 backdrop-blur-md border-b overflow-visible ${
           scrolled
             ? "bg-background/85 shadow-lg border-foreground/10"
             : "bg-background/60 border-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-4">
-          <Link
-            href="#"
-            className="group flex items-center shrink-0 min-h-[2.5rem] transition-all duration-300"
-          >
-            <span className="text-2xl font-bold uppercase tracking-tighter text-foreground group-hover:text-primary transition-colors leading-none">
-              RIVIERA CONCIERGERIE
-            </span>
-          </Link>
-          <div className="hidden md:flex items-center gap-4 flex-1 justify-end">
-            <nav className="flex items-center gap-8 bg-background/80 backdrop-blur-md border border-primary/20 rounded-full px-8 py-3 shadow-lg h-12 box-border">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm font-medium text-foreground/90 hover:text-primary transition-colors leading-tight whitespace-nowrap"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-            <a
-              href="tel:0132345465"
-              title="01.32.34.54.65"
-              aria-label="Appeler le 01.32.34.54.65"
-              className="relative flex items-center justify-center shrink-0 w-10 h-10 bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary/50 text-primary rounded-lg transition-all duration-300"
-            >
-              <span className="absolute inset-0 rounded-lg bg-primary/30 opacity-75 animate-ping" aria-hidden />
-              <Phone className="relative w-4 h-4" strokeWidth={1.5} />
-            </a>
-          </div>
+        <div className="w-full h-24 flex items-center justify-between px-4 sm:px-6 overflow-visible relative">
+          {/* Extrême gauche : logo (empreinte réduite sur desktop pour limiter l’espace vide avant le menu) */}
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
-            className="md:hidden flex items-center justify-center shrink-0 w-10 h-10 text-foreground hover:text-primary transition-colors"
+            className="flex items-center justify-center shrink-0 w-10 h-10 text-foreground hover:text-primary transition-colors z-10"
             aria-label="Ouvrir le menu"
           >
             <Menu className="w-6 h-6" strokeWidth={1.5} />
           </button>
+          <Link
+            href="#"
+            className="group absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center overflow-visible"
+          >
+            <img
+              src={LOGO_SRC}
+              alt="Call Riviera - Conciergerie"
+              className="h-[5.5rem] w-auto object-contain object-center max-w-[420px] min-w-[200px] origin-center scale-[2]"
+            />
+          </Link>
+          <a
+            href="tel:0132345465"
+            title="01.32.34.54.65"
+            aria-label="Appeler le 01.32.34.54.65"
+            className="relative flex items-center justify-center shrink-0 w-10 h-10 bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary/50 text-primary rounded-lg transition-all duration-300 z-10"
+          >
+            <span className="absolute inset-0 rounded-lg bg-primary/30 opacity-75 animate-ping" aria-hidden />
+            <Phone className="relative w-4 h-4" strokeWidth={1.5} />
+          </a>
         </div>
       </header>
 

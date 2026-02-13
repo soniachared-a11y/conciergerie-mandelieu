@@ -6,7 +6,7 @@ Le commit **v1** est déjà créé en local. Il reste à créer le dépôt sur G
 
 1. Va sur **https://github.com/new**
 2. **Repository name :** `conciergerie-mandelieu`
-3. **Description (optionnel) :** Riviera Conciergerie - Site Next.js
+3. **Description (optionnel) :** Call Riviera - Site Next.js
 4. Choisis **Public**
 5. **Ne coche pas** "Add a README", ".gitignore" ou "license" (le projet les a déjà)
 6. Clique sur **Create repository**

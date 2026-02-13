@@ -21,7 +21,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: 6rem;
 }
 
 body {
@@ -88,9 +88,9 @@ body {
   animation: scroll-infinite 60s linear infinite;
 }
 
-/* Témoignages : 2 passages puis arrêt */
+/* Témoignages : défilement doux (2 passages puis arrêt) */
 .animate-scroll-twice {
-  animation: scroll-infinite 50s linear 2 forwards;
+  animation: scroll-infinite 75s ease-in-out 2 forwards;
 }
 
 /* FleetServicesMarquee : vitesses différentes pour contraste entre les deux bandes */

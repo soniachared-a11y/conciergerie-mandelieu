@@ -53,7 +53,7 @@ export default function ComparisonTable() {
             <div className="bg-primary/5 p-6 border-r border-primary/10 relative">
               <div className="absolute top-0 left-0 w-full h-1 bg-primary" />
               <div className="h-16 flex items-center text-primary font-bold text-lg tracking-tight">
-                RIVIERA CONCIERGERIE
+                CALL RIVIERA
               </div>
               {ROWS.map((r) => (
                 <div

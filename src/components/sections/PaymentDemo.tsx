@@ -169,7 +169,7 @@ export default function PaymentDemo() {
                   </motion.div>
                 </motion.div>
                 <div className="relative z-10 text-foreground/60 text-sm mb-12">
-                  Riviera Conciergerie - Course
+                  Call Riviera - Course
                 </div>
                 <div className="relative z-10 w-full py-4 border-t border-primary/20 flex justify-between text-sm">
                   <span className="text-foreground/70">Moyen de paiement</span>

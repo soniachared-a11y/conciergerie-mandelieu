@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const IMAGE_URUS = "/assets/images/urus-location.png";
+const IMAGE_URUS = "/assets/images/urus-location-call-riviera.png";
 const IMAGE_CHAUFFEUR = "/assets/images/chauffeur-prive.png";
 
 export default function ConciergerieServices() {
@@ -29,7 +29,7 @@ export default function ConciergerieServices() {
             Découvrez un confort et un style inégalés
           </h2>
           <p className="text-foreground/85 text-base lg:text-lg leading-relaxed max-w-xl mb-4">
-            En 2019, après 15 ans dans l&apos;hôtellerie de luxe à Monaco, j&apos;ai créé Riviera Conciergerie avec une obsession : que mes clients vivent la Côte d&apos;Azur comme je la vis.
+            En 2019, après 15 ans dans l&apos;hôtellerie de luxe à Monaco, j&apos;ai créé Call Riviera avec une obsession : que mes clients vivent la Côte d&apos;Azur comme je la vis.
           </p>
           <p className="text-foreground/85 text-base lg:text-lg leading-relaxed max-w-xl mb-4">
             Pas de stress. Pas d&apos;imprévu. Pas de compteur qui défile pendant que vous admirez le coucher de soleil sur la baie de Villefranche.
@@ -52,7 +52,7 @@ export default function ConciergerieServices() {
           <div className="absolute inset-0">
             <Image
               src={IMAGE_URUS}
-              alt="Location de voiture haut de gamme — Riviera Conciergerie"
+              alt="Location de voiture haut de gamme — Call Riviera"
               fill
               className="object-cover object-center"
               sizes="(max-width: 1024px) 100vw, 50vw"

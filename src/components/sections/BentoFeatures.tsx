@@ -58,7 +58,7 @@ export default function BentoFeatures() {
                 <p className="text-sm text-foreground/60 flex items-center gap-2 mt-0.5">
                   <span>Mardi 15 mars 2024</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                  <span className="text-primary font-medium">Riviera Conciergerie</span>
+                  <span className="text-primary font-medium">Call Riviera</span>
                 </p>
               </div>
               <div className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-background/80 border border-primary/20">

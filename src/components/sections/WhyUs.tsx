@@ -111,7 +111,7 @@ export default function WhyUs() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          Pourquoi Choisir Riviera Conciergerie ?
+          Pourquoi Choisir Call Riviera ?
         </motion.h2>
         <motion.div
           className="w-16 h-0.5 bg-primary/60 mx-auto mb-12"

@@ -135,7 +135,7 @@ export default function ComparisonPaymentSection() {
                     55,00 €
                   </motion.span>
                 </motion.div>
-                <span className="relative z-10 text-foreground/60 text-[10px] mb-3 text-center">Riviera Conciergerie - Course</span>
+                <span className="relative z-10 text-foreground/60 text-[10px] mb-3 text-center">Call Riviera - Course</span>
                 <div className="relative z-10 w-full py-1.5 border-t border-primary/20 flex justify-between text-[10px]">
                   <span className="text-foreground/70">Paiement</span>
                   <span className="text-foreground flex items-center gap-1">

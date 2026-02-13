@@ -84,8 +84,8 @@ export default function ChauffeurRegionSection() {
               </h2>
               <p className="text-[#1a1a1a]/90 text-sm lg:text-base font-light leading-relaxed">
                 Deux solutions premium pour votre expérience sur la Côte d&apos;Azur : la{" "}
-                <strong className="font-semibold font-display text-primary">location de véhicules prestige</strong> pour une liberté totale, ou notre{" "}
-                <strong className="font-semibold font-display text-primary">chauffeur privé</strong> pour une sérénité absolue. Quel que soit votre choix, nous garantissons tarifs transparents, véhicules haut de gamme et un paiement sécurisé instantané via SumUp — sans surprise, sans attente.
+                <strong className="font-bold font-display text-[#1a1a1a]">location de véhicules prestige</strong> pour une liberté totale, ou notre{" "}
+                <strong className="font-bold font-display text-[#1a1a1a]">chauffeur privé</strong> pour une sérénité absolue. Quel que soit votre choix, nous garantissons tarifs transparents, véhicules haut de gamme et un paiement sécurisé instantané via SumUp — sans surprise, sans attente.
               </p>
             </motion.div>
 
@@ -99,8 +99,8 @@ export default function ChauffeurRegionSection() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.4 }}
               >
-                <span className="inline-flex items-center gap-2 text-primary text-xs font-medium uppercase tracking-wider mb-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                <span className="inline-flex items-center gap-2 text-[#1a1a1a] text-xs font-medium uppercase tracking-wider mb-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                   Paiement sécurisé
                 </span>
                 <p className="text-[#1a1a1a]/80 text-xs sm:text-sm font-light mb-4 text-center">
@@ -151,7 +151,7 @@ export default function ChauffeurRegionSection() {
                         55,00 €
                       </motion.span>
                     </motion.div>
-                    <span className="relative z-10 text-foreground/60 text-[10px] mb-3 text-center">Riviera Conciergerie - Course</span>
+                    <span className="relative z-10 text-foreground/60 text-[10px] mb-3 text-center">Call Riviera - Course</span>
                     <div className="relative z-10 w-full py-1.5 border-t border-primary/20 flex justify-between text-[10px]">
                       <span className="text-foreground/70">Paiement</span>
                       <span className="text-foreground flex items-center gap-1">

@@ -43,7 +43,7 @@ export default function CheminVersExcellence() {
         <div className="absolute z-20 drop-shadow-[0_30px_30px_rgba(0,0,0,0.9)] scale-110 md:scale-125">
           <img
             src="/assets/images/tesla-prestige.png"
-            alt="Tesla Model 3 — véhicule prestige Riviera Conciergerie"
+            alt="Tesla Model 3 — véhicule prestige Call Riviera"
             className="object-contain brightness-75 contrast-125 grayscale-[20%] w-24 md:w-32 h-auto"
           />
         </div>
@@ -61,13 +61,11 @@ export default function CheminVersExcellence() {
         </h2>
       </motion.div>
       <div className="absolute top-[70%] left-0 right-0 w-full text-center z-40 pointer-events-none px-6">
-        <div className="inline-block px-8 py-3 rounded-full bg-background/80 backdrop-blur-md border border-primary/20 shadow-2xl">
-          <p className="text-xl md:text-2xl text-foreground/90 font-light">
-            Détendez-vous.{" "}
-            <span className="text-primary font-semibold">Riviera Conciergerie</span>{" "}
-            s&apos;occupe de la route.
-          </p>
-        </div>
+        <p className="text-lg md:text-2xl text-foreground/90 font-light md:inline-block md:px-8 md:py-3 md:rounded-full md:bg-background/80 md:backdrop-blur-md md:border md:border-primary/20 md:shadow-2xl">
+          Détendez-vous.{" "}
+          <span className="font-display text-primary font-semibold tracking-tight">Call Riviera</span>{" "}
+          s&apos;occupe de la route.
+        </p>
       </div>
     </section>
   );

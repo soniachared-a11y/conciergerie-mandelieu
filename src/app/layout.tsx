@@ -19,8 +19,8 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Conciergerie Mandelieu",
-  description: "Conciergerie de luxe à Mandelieu",
+  title: "Call Riviera",
+  description: "Call Riviera — Conciergerie de luxe à Mandelieu",
 };
 
 export default function RootLayout({

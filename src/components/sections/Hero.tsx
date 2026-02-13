@@ -44,9 +44,11 @@ export default function Hero() {
             initial={{ opacity: 0, x: -140, filter: "blur(8px)" }}
             animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
             transition={{ duration: 1.2, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
-            className="flex justify-start items-center font-display text-[2.5rem] sm:text-5xl lg:text-[3.6rem] font-light text-foreground tracking-tight leading-[1.15] mb-5 drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]"
+            className="flex flex-wrap justify-start items-center gap-x-3 gap-y-1 font-display text-[2.5rem] sm:text-5xl lg:text-[3.6rem] font-light text-foreground tracking-tight leading-[1.15] mb-5 drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]"
           >
-            Riviera Conciergerie&nbsp;: l&apos;excellence de Mandelieu à Monaco.
+            Call Riviera
+            <span className="w-1.5 h-1.5 rounded-full bg-primary/80 shrink-0" aria-hidden />
+            Un service d&apos;excellence.
           </motion.h1>
 
           <p className="font-display text-base lg:text-lg text-foreground/95 font-light leading-relaxed mb-2 max-w-md drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">

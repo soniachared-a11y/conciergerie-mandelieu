@@ -15,21 +15,21 @@ const IMG_LIVRAISON =
 const cards = [
   {
     image: IMG_LOCATION,
-    alt: "Location de véhicules haut de gamme — Riviera Conciergerie",
+    alt: "Location de véhicules haut de gamme — Call Riviera",
     title: "Location haut de gamme",
     description:
       "Véhicules de prestige à votre disposition sur la Côte d'Azur : SUV, berlines et sport. Réservez le vôtre pour vos trajets entre Mandelieu et Monaco.",
   },
   {
     image: IMG_CHAUFFEUR,
-    alt: "Chauffeur privé — Riviera Conciergerie",
+    alt: "Chauffeur privé — Call Riviera",
     title: "Chauffeur privé à disposition",
     description:
       "Tranquillité et discrétion : un chauffeur professionnel vous accompagne partout, en véhicules électriques et silencieux, 24h/24.",
   },
   {
     image: IMG_LIVRAISON,
-    alt: "Livraison 24/24 — champagne, cigares, eau — Riviera Conciergerie",
+    alt: "Livraison 24/24 — champagne, cigares, eau — Call Riviera",
     title: "Livraison 24/24 — ce que vous voulez, quand vous voulez",
     description:
       "Champagne, cigares, eau, mets… Faites-vous livrer sur la Riviera à toute heure. Un service conciergerie à la demande.",
@@ -80,7 +80,7 @@ export default function ScrollStackSection() {
             Nos services à la carte
           </h2>
           <p className="text-foreground/85 text-base sm:text-lg leading-relaxed">
-            Riviera Conciergerie met à votre disposition trois piliers sur la Côte d&apos;Azur : la{" "}
+            Call Riviera met à votre disposition trois piliers sur la Côte d&apos;Azur : la{" "}
             <strong className="text-primary font-medium">location de véhicules haut de gamme</strong>, un{" "}
             <strong className="text-primary font-medium">chauffeur privé</strong> à votre service 24h/24, et une{" "}
             <strong className="text-primary font-medium">livraison à la demande</strong> — champagne, cigares, mets — pour combler vos envies à toute heure. Découvrez ci-dessous chaque offre.

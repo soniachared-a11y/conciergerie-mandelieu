@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer className="bg-background border-t border-primary/10 relative z-20 overflow-hidden">
+    <footer className="bg-background border-t border-primary/10 relative z-20 overflow-visible">
       <div className="absolute inset-0" aria-hidden>
         <Image
           src="/assets/images/view-point-cote-azur.png"
@@ -18,17 +18,21 @@ export default function Footer() {
           priority={false}
         />
       </div>
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-10">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-16 pb-10 overflow-visible">
+        <div className="flex justify-center mb-10">
+          <Link
+            href="#"
+            className="group flex items-center justify-center overflow-visible"
+          >
+            <img
+              src="/assets/images/Gemini_Generated_Image_vladnfvladnfvlad-removebg-preview.png"
+              alt="Call Riviera - Conciergerie"
+              className="h-[5.5rem] w-auto object-contain object-center max-w-[420px] min-w-[200px] origin-center scale-[2]"
+            />
+          </Link>
+        </div>
         <div className="flex flex-col md:flex-row justify-between gap-12 mb-16">
-          <div className="max-w-sm">
-            <Link
-              href="#"
-              className="group flex items-center gap-3 mb-6 w-fit"
-            >
-              <span className="text-2xl font-bold uppercase tracking-tighter text-foreground group-hover:text-primary transition-colors">
-                RIVIERA CONCIERGERIE
-              </span>
-            </Link>
+          <div className="max-w-sm overflow-visible">
             <p className="text-foreground/70 text-sm leading-relaxed mb-6 font-light">
               Conciergerie de luxe sur la Côte d&apos;Azur. Transport privé
               24/7 de Mandelieu à Monaco. Discrétion et confort inégalés.
@@ -109,7 +113,7 @@ export default function Footer() {
           viewport={{ once: true }}
         >
           <p className="text-foreground/50 text-xs font-light">
-            © {new Date().getFullYear()} Riviera Conciergerie. Tous droits réservés.
+            © {new Date().getFullYear()} Call Riviera. Tous droits réservés.
             <span className="mx-2">·</span>
             Créé par <span className="font-display text-primary/80 font-bold">Pertinentia</span>
           </p>
