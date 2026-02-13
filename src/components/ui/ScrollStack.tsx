@@ -2,6 +2,7 @@
 
 import { useLayoutEffect, useRef, useCallback } from "react";
 import Lenis from "lenis";
+import { useLenis } from "@/components/SmoothScrollProvider";
 
 export const ScrollStackItem = ({
   children,
@@ -44,6 +45,7 @@ const ScrollStack = ({
   useWindowScroll = false,
   onStackComplete,
 }: ScrollStackProps) => {
+  const globalLenis = useLenis();
   const scrollerRef = useRef<HTMLDivElement>(null);
   const stackCompletedRef = useRef(false);
   const animationFrameRef = useRef<number | null>(null);
@@ -67,8 +69,9 @@ const ScrollStack = ({
 
   const getScrollData = useCallback(() => {
     if (useWindowScroll) {
+      const scrollTop = globalLenis ? globalLenis.scroll : window.scrollY;
       return {
-        scrollTop: window.scrollY,
+        scrollTop,
         containerHeight: window.innerHeight,
         scrollContainer: document.documentElement,
       };
@@ -79,17 +82,18 @@ const ScrollStack = ({
       containerHeight: scroller?.clientHeight ?? 0,
       scrollContainer: scroller,
     };
-  }, [useWindowScroll]);
+  }, [useWindowScroll, globalLenis]);
 
   const getElementOffset = useCallback(
     (element: Element) => {
       if (useWindowScroll) {
         const rect = element.getBoundingClientRect();
-        return rect.top + window.scrollY;
+        const scrollTop = globalLenis ? globalLenis.scroll : window.scrollY;
+        return rect.top + scrollTop;
       }
       return (element as HTMLElement).offsetTop;
     },
-    [useWindowScroll]
+    [useWindowScroll, globalLenis]
   );
 
   const updateCardTransforms = useCallback(() => {
@@ -205,6 +209,9 @@ const ScrollStack = ({
   }, [updateCardTransforms]);
 
   const setupLenis = useCallback(() => {
+    if (useWindowScroll && globalLenis) {
+      return null;
+    }
     if (useWindowScroll) {
       const lenis = new Lenis({
         duration: 1.2,
@@ -258,7 +265,7 @@ const ScrollStack = ({
 
     lenisRef.current = lenis;
     return lenis;
-  }, [handleScroll, useWindowScroll]);
+  }, [handleScroll, useWindowScroll, globalLenis]);
 
   useLayoutEffect(() => {
     const scroller = scrollerRef.current;
@@ -283,6 +290,18 @@ const ScrollStack = ({
       (card as HTMLElement).style.transform = "translateZ(0)";
       (card as HTMLElement).style.perspective = "1000px";
     });
+
+    if (useWindowScroll && globalLenis) {
+      globalLenis.on("scroll", handleScroll);
+      updateCardTransforms();
+      return () => {
+        globalLenis.off("scroll", handleScroll);
+        stackCompletedRef.current = false;
+        cardsRef.current = [];
+        transformsCache.clear();
+        isUpdatingRef.current = false;
+      };
+    }
 
     setupLenis();
     updateCardTransforms();
@@ -310,9 +329,11 @@ const ScrollStack = ({
     rotationAmount,
     blurAmount,
     useWindowScroll,
+    globalLenis,
     onStackComplete,
     setupLenis,
     updateCardTransforms,
+    handleScroll,
   ]);
 
   return (

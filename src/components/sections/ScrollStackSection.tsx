@@ -71,10 +71,10 @@ export default function ScrollStackSection() {
         {/* Texte de présentation du service */}
         <motion.div
           className="text-center max-w-2xl mx-auto mb-16 sm:mb-20"
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 22 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.95, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <h2 className="font-display text-3xl sm:text-4xl font-light text-foreground mb-4">
             Nos services à la carte

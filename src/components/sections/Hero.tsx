@@ -13,7 +13,7 @@ const VIDEO_SRC = "/assets/videos/hero/Tesla_Model_Y_Côte_d_Azur_Sunset.mp4";
 export default function Hero() {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 500], [0, 120]);
+  const y = useTransform(scrollY, [0, 600], [0, 70]);
 
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-background">

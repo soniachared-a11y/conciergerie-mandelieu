@@ -147,7 +147,7 @@ export default function FleetServicesMarquee() {
               return (
                 <article
                   key={`chauffeur-${i}`}
-                  className="flex-shrink-0 w-[280px] sm:w-[320px] rounded-2xl overflow-hidden border border-primary/20 bg-background/80 shadow-xl hover:border-primary/40 transition-colors flex flex-col"
+                  className="flex-shrink-0 w-[280px] sm:w-[320px] rounded-2xl overflow-hidden border border-primary/20 bg-background/80 shadow-xl hover:border-primary/40 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 flex flex-col"
                 >
                   <div className="relative h-[140px] bg-foreground/10 shrink-0">
                     <Image
@@ -230,7 +230,7 @@ export default function FleetServicesMarquee() {
             {[...vehiclesToShow, ...vehiclesToShow].map((v, i) => (
               <article
                 key={`location-${i}`}
-                className="flex-shrink-0 w-[280px] sm:w-[320px] rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-lg hover:shadow-xl transition-shadow"
+                className="flex-shrink-0 w-[280px] sm:w-[320px] rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
               >
                 <div className="relative h-[140px] bg-gray-100">
                   <Image

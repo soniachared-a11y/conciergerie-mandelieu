@@ -72,10 +72,10 @@ export default function FAQ() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
         <motion.div
           className="space-y-8"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 22 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.95, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <div className="space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/20 border border-primary/30 font-display text-xs font-medium uppercase tracking-wider text-primary">
@@ -147,10 +147,10 @@ export default function FAQ() {
         <motion.div
           id="reservation"
           className="relative w-full max-w-sm mx-auto lg:mx-0 lg:ml-auto lg:mr-0 bg-background/60 backdrop-blur-sm rounded-xl border border-primary/20 overflow-hidden"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 22 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.95, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.2 }}
         >
           <div className="relative z-10 p-4 lg:p-5">
             <h3 className="text-base font-semibold tracking-tight mb-3 min-h-[1.5rem] flex items-center">

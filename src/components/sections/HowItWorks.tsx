@@ -32,10 +32,10 @@ export default function HowItWorks() {
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           className="text-center mb-20"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 22 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.95, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <span className="inline-block font-display text-[11px] font-extrabold uppercase tracking-[0.2em] text-neutral-900 mb-4 px-4 py-2 rounded-full bg-neutral-100">
             Simplicité Absolue
@@ -69,7 +69,7 @@ export default function HowItWorks() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              transition={{ duration: 0.95, ease: [0.25, 0.46, 0.45, 0.94], delay: i * 0.1 }}
             >
               <div className="w-24 h-24 mx-auto bg-white border border-black rounded-full flex items-center justify-center mb-8 shadow-lg z-10 relative group-hover:border-neutral-800 transition-colors duration-500">
                 <step.icon
@@ -92,10 +92,10 @@ export default function HowItWorks() {
 
         <motion.div
           className="text-center mt-16"
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.95, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.2 }}
         >
           <Link
             href="#reservation"

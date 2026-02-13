@@ -19,6 +19,7 @@ export default function ComparisonTable() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.95, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <h2 className="text-3xl lg:text-4xl font-semibold text-foreground tracking-tight mb-4">
             Le Choix de l&apos;Excellence
@@ -33,7 +34,7 @@ export default function ComparisonTable() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
+          transition={{ duration: 0.95, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.1 }}
         >
           <div className="grid grid-cols-1 md:grid-cols-3">
             <div className="hidden md:block bg-foreground/[0.03] p-6 border-r border-primary/10">

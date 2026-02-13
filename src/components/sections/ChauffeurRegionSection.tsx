@@ -74,10 +74,10 @@ export default function ChauffeurRegionSection() {
             {/* Titre et paragraphe — L'Excellence à Votre Service */}
             <motion.div
               className="text-center mb-6 w-full"
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.4 }}
+              transition={{ duration: 0.95, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
               <h2 className="text-2xl lg:text-3xl font-light text-[#1a1a1a] tracking-tight mb-3 font-display">
                 L&apos;Excellence à Votre Service
@@ -94,10 +94,10 @@ export default function ChauffeurRegionSection() {
               {/* Mockup téléphone */}
               <motion.div
                 className="flex flex-col items-center shrink-0"
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.95, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
                 <span className="inline-flex items-center gap-2 text-[#1a1a1a] text-xs font-medium uppercase tracking-wider mb-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />

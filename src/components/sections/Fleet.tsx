@@ -64,7 +64,7 @@ export default function Fleet() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`group rounded-2xl overflow-hidden bg-background/80 border border-primary/20 shadow-lg transition-all duration-500 hover:shadow-xl hover:border-primary/40 ${
+              className={`group rounded-2xl overflow-hidden bg-background/80 border border-primary/20 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/40 ${
                 v.highlight ? "md:-translate-y-4 shadow-2xl shadow-primary/20 border-primary/40" : ""
               }`}
             >

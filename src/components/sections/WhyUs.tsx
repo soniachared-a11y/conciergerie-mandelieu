@@ -106,10 +106,10 @@ export default function WhyUs() {
       <div className="max-w-7xl mx-auto px-6">
         <motion.h2
           className="font-display text-3xl sm:text-4xl lg:text-[2.5rem] font-light text-foreground text-center mb-4 tracking-tight"
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.95, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           Pourquoi Choisir Call Riviera ?
         </motion.h2>
@@ -132,7 +132,7 @@ export default function WhyUs() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-30px" }}
-              transition={{ duration: 0.4, delay: i * 0.06 }}
+              transition={{ duration: 0.95, ease: [0.25, 0.46, 0.45, 0.94], delay: i * 0.06 }}
               whileHover={{ y: -4 }}
             >
               {card.image ? (

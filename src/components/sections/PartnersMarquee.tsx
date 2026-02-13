@@ -18,10 +18,10 @@ export default function PartnersMarquee() {
       <div className="max-w-7xl mx-auto px-6 mb-8 text-center">
         <motion.span
           className="text-xs font-semibold tracking-widest text-foreground/60 uppercase"
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.95, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           Nos Partenaires de Confiance
         </motion.span>

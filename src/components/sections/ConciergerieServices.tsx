@@ -17,10 +17,10 @@ export default function ConciergerieServices() {
         {/* Ligne 1 – Gauche : bloc texte (fond sombre pour contraste) */}
         <motion.div
           className="flex flex-col justify-center px-6 py-16 lg:py-20 lg:pr-10 order-1 bg-background"
-          initial={{ opacity: 0, x: -24 }}
+          initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px", amount: 0.2 }}
-          transition={{ duration: 0.55, ease: [0.22, 0.61, 0.36, 1] }}
+          transition={{ duration: 0.95, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <span className="inline-block w-fit font-display text-[11px] font-medium uppercase tracking-[0.15em] mb-4 px-2.5 py-1 rounded-md bg-primary/20 text-primary border border-primary/30 shadow-sm whitespace-nowrap">
             À propos de nous
@@ -44,10 +44,10 @@ export default function ConciergerieServices() {
         {/* Ligne 1 – Droite : image Urus */}
         <motion.div
           className="relative w-full aspect-[4/3] lg:aspect-auto lg:min-h-[320px] order-2"
-          initial={{ opacity: 0, x: 24 }}
+          initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px", amount: 0.2 }}
-          transition={{ duration: 0.55, ease: [0.22, 0.61, 0.36, 1] }}
+          transition={{ duration: 0.95, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <div className="absolute inset-0">
             <Image
@@ -64,10 +64,10 @@ export default function ConciergerieServices() {
         {/* Ligne 2 – Gauche : image chauffeur — mobile : après le texte (order-4) */}
         <motion.div
           className="relative w-full aspect-[4/3] lg:aspect-auto lg:min-h-[320px] order-4 lg:order-3"
-          initial={{ opacity: 0, x: -24 }}
+          initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px", amount: 0.2 }}
-          transition={{ duration: 0.55, delay: 0.08, ease: [0.22, 0.61, 0.36, 1] }}
+          transition={{ duration: 0.95, delay: 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <div className="absolute inset-0">
             <Image
@@ -84,10 +84,10 @@ export default function ConciergerieServices() {
         {/* Ligne 2 – Droite : bloc texte fond blanc — même hiérarchie que le bloc du haut (label + titre sans boîte) */}
         <motion.div
           className="flex flex-col justify-center px-6 py-16 lg:py-20 lg:pl-10 order-3 lg:order-4"
-          initial={{ opacity: 0, x: 24 }}
+          initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px", amount: 0.2 }}
-          transition={{ duration: 0.55, delay: 0.08, ease: [0.22, 0.61, 0.36, 1] }}
+          transition={{ duration: 0.95, delay: 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <span className="inline-block w-fit font-display text-[11px] font-medium uppercase tracking-[0.15em] mb-4 px-2.5 py-1 rounded-md bg-primary/15 text-background border border-primary/25 shadow-sm whitespace-nowrap">
             Nos prestations

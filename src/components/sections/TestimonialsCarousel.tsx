@@ -57,9 +57,10 @@ export default function TestimonialsCarousel() {
 
       <motion.div
         className="max-w-7xl mx-auto px-6 mb-16 relative z-10 text-center"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 22 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
+        transition={{ duration: 0.95, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
         <h2 className="font-display text-3xl lg:text-4xl font-light text-[#1a1a1a] tracking-tight mb-4">
           Ce que nos Clients Disent
