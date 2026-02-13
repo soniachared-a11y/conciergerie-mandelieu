@@ -44,10 +44,10 @@ export default function Hero() {
             initial={{ opacity: 0, x: -140, filter: "blur(8px)" }}
             animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
             transition={{ duration: 1.2, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap justify-start items-center gap-x-3 gap-y-1 font-display text-[2.5rem] sm:text-5xl lg:text-[3.6rem] font-light text-foreground tracking-tight leading-[1.15] mb-5 drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]"
+            className="font-display text-[2.5rem] sm:text-5xl lg:text-[3.6rem] font-light text-foreground tracking-tight leading-[1.15] mb-5 drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]"
           >
             Call Riviera
-            <span className="w-1.5 h-1.5 rounded-full bg-primary/80 shrink-0" aria-hidden />
+            <br />
             Un service d&apos;excellence.
           </motion.h1>
 
@@ -74,7 +74,7 @@ export default function Hero() {
               <ArrowRight className="w-4 h-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={1.5} />
             </Link>
             <span className="text-xs tracking-wide">
-              <span className="text-primary">Paiement SumUp</span>
+              <span className="text-primary">Paiement sécurisé</span>
               <span className="text-white"> · Devis instantané</span>
             </span>
           </div>

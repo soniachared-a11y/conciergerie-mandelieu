@@ -12,9 +12,9 @@ const chauffeurVehicles = [
   {
     image: "/assets/images/service-cannes-lions.jpg",
     title: "Événements & Festivals",
-    subtitle: "Cannes Lions",
+    subtitle: "Festival de Cannes",
     description:
-      "Chauffeur privé pour le Cannes Lions, le Festival de Cannes, MIPCOM et tous les grands festivals de la Côte d'Azur. Prise en charge à l'hôtel ou en villa, dépose sur le tapis rouge, attente sur site pendant les projections et cérémonies. Véhicules prestige (berlines, SUV), discrétion absolue et ponctualité. Devis sur mesure selon vos déplacements et la durée de présence.",
+      "Chauffeur privé pour le Festival de Cannes et les grands événements de la Côte d'Azur. Prise en charge à l'hôtel ou en villa, dépose sur le tapis rouge, attente sur site pendant les projections et cérémonies. Véhicules prestige (berlines, SUV), discrétion absolue et ponctualité. Devis sur mesure selon vos déplacements et la durée de présence.",
   },
   {
     image: "/assets/images/service-grand-prix-monaco.png",
@@ -38,7 +38,7 @@ const chauffeurVehicles = [
       "Découvrez la Riviera avec un chauffeur dédié : villages perchés (Eze, Saint-Paul-de-Vence), caps et criques (Saint-Jean-Cap-Ferrat, Menton), calanques et routes des Alpes. Itinéraires sur mesure, commentaires sur les lieux et pauses photo à volonté. La plus belle région de France, en toute sérénité.",
   },
   {
-    image: "/assets/images/shopping-bonnes-adresses.png",
+    image: "/assets/images/shopping-bonnes-adresses.jpg",
     title: "Shopping",
     subtitle: "Bonnes adresses",
     description:
