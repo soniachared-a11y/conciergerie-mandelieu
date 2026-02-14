@@ -64,7 +64,7 @@ export default function CheminVersExcellence() {
         <p className="text-lg md:text-2xl text-foreground/90 font-light md:inline-block md:px-8 md:py-3 md:rounded-full md:bg-background/80 md:backdrop-blur-md md:border md:border-primary/20 md:shadow-2xl">
           Détendez-vous.{" "}
           <span className="font-display text-primary font-semibold tracking-tight">Call Riviera</span>{" "}
-          s&apos;occupe de la route.
+          s&apos;occupe de tout.
         </p>
       </div>
     </section>

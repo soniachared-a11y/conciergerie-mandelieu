@@ -99,10 +99,16 @@ export default function HowItWorks() {
         >
           <Link
             href="#reservation"
-            className="inline-flex items-center gap-2 font-display text-sm font-medium uppercase tracking-[0.2em] text-neutral-900 hover:text-primary transition-colors duration-300 border-b border-transparent hover:border-primary pb-0.5"
+            className="group/link relative inline-flex items-center gap-2 font-display text-sm font-medium uppercase tracking-[0.2em] text-neutral-900 hover:text-primary transition-colors duration-300 pb-0.5"
           >
-            Réserver maintenant
-            <ArrowRight className="w-3.5 h-3.5" strokeWidth={2} />
+            <span className="relative">
+              Réserver maintenant
+              <span
+                className="absolute bottom-0 left-0 w-full h-px bg-primary scale-x-0 group-hover/link:scale-x-100 transition-transform duration-300 origin-left"
+                aria-hidden
+              />
+            </span>
+            <ArrowRight className="w-3.5 h-3.5 text-primary opacity-70 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 transition-all duration-300" strokeWidth={2} />
           </Link>
         </motion.div>
       </div>
