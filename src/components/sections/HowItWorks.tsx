@@ -71,7 +71,7 @@ export default function HowItWorks() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.95, ease: [0.25, 0.46, 0.45, 0.94], delay: i * 0.1 }}
             >
-              <div className="w-24 h-24 mx-auto bg-white border border-black rounded-full flex items-center justify-center mb-8 shadow-lg z-10 relative group-hover:border-neutral-800 transition-colors duration-500">
+              <div className="w-24 h-24 mx-auto bg-white border border-black rounded-full flex items-center justify-center mb-8 shadow-lg z-10 relative group-hover:border-neutral-800 group-hover:bg-neutral-50 transition-colors duration-500">
                 <step.icon
                   className="w-10 h-10 text-primary"
                   strokeWidth={1.5}

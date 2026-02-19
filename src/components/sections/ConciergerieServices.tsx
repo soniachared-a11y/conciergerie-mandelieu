@@ -36,8 +36,8 @@ export default function ConciergerieServices() {
           </p>
           <p className="text-foreground/85 text-base lg:text-lg leading-relaxed max-w-xl">
             Juste vous, la route et la Méditerranée. Deux expériences : la{" "}
-            <strong className="font-light font-display text-primary/95">location de véhicules prestige</strong> pour une liberté totale, ou notre{" "}
-            <strong className="font-light font-display text-primary/95">chauffeur privé</strong> pour une sérénité absolue, de Mandelieu à Monaco.
+            <strong className="font-semibold font-display text-primary/95">location de véhicules prestige</strong> pour une liberté totale, ou notre{" "}
+            <strong className="font-semibold font-display text-primary/95">chauffeur privé</strong> pour une sérénité absolue, de Mandelieu à Monaco.
           </p>
         </motion.div>
 
@@ -83,7 +83,7 @@ export default function ConciergerieServices() {
 
         {/* Ligne 2 – Droite : bloc texte fond blanc — même hiérarchie que le bloc du haut (label + titre sans boîte) */}
         <motion.div
-          className="flex flex-col justify-center px-6 py-16 lg:py-20 lg:pl-10 order-3 lg:order-4"
+          className="relative flex flex-col justify-center px-6 py-16 lg:py-20 lg:pl-10 order-3 lg:order-4 rounded-2xl bg-primary/5"
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px", amount: 0.2 }}
@@ -96,7 +96,7 @@ export default function ConciergerieServices() {
             Votre expérience sur mesure
           </h2>
           <p className="text-background/80 text-base lg:text-lg leading-relaxed max-w-xl">
-            Que vous ayez besoin d&apos;un <strong className="font-light font-display text-primary/95">véhicule de prestige en location</strong> ou d&apos;un <strong className="font-light font-display text-primary/95">chauffeur privé</strong> pour un événement d&apos;entreprise, une occasion spéciale ou une soirée en ville, notre équipe est là pour vous offrir une expérience irréprochable. Confort, discrétion et élégance de Mandelieu à Monaco.
+            Que vous ayez besoin d&apos;un <strong className="font-bold font-display text-background text-lg lg:text-xl">véhicule de prestige en location</strong> ou d&apos;un <strong className="font-bold font-display text-background text-lg lg:text-xl">chauffeur privé</strong> pour un événement d&apos;entreprise, une occasion spéciale ou une soirée en ville, notre équipe est là pour vous offrir une expérience irréprochable. Confort, discrétion et élégance de Mandelieu à Monaco.
           </p>
         </motion.div>
       </div>

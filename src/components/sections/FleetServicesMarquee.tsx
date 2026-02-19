@@ -131,7 +131,7 @@ export default function FleetServicesMarquee() {
   return (
     <section id="vehicules" className="relative z-20" data-section="fleet-services">
       {/* Bande 1 : Nos chauffeurs à disposition — fond sombre */}
-      <div className="py-12 sm:py-14 bg-background overflow-hidden">
+      <div className="pt-12 sm:pt-14 pb-0 bg-background overflow-hidden">
         <div className="mb-6 px-6">
           <h2 className="text-2xl sm:text-3xl font-semibold text-foreground tracking-tight font-display">
             Nos chauffeurs à disposition
@@ -140,7 +140,7 @@ export default function FleetServicesMarquee() {
             Services de conciergerie — événements, Grand Prix, transferts
           </p>
         </div>
-        <div className="relative flex overflow-hidden mask-linear-fade">
+        <div className="relative flex overflow-hidden mask-linear-fade pb-12 sm:pb-14">
           <div className="flex items-stretch gap-6 animate-scroll-marquee-slow px-6" style={{ width: "max-content" }}>
             {[...chauffeurVehicles, ...chauffeurVehicles].map((v, i) => {
               const isExpanded = expandedChauffeurIndex === i;
@@ -200,32 +200,8 @@ export default function FleetServicesMarquee() {
       </div>
 
       {/* Bande 2 : À louer — fond blanc, bordure de séparation */}
-      <div className="py-12 sm:py-14 bg-white overflow-hidden border-t border-gray-200/80">
-        <div className="mb-6 px-6">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-[#1E1E1E] tracking-tight font-display">
-            À louer
-          </h2>
-          <p className="text-[#1E1E1E]/50 text-xs sm:text-sm mt-1 font-light">
-            Location de véhicules haut de gamme sur la Côte d&apos;Azur
-          </p>
-          <div className="flex flex-wrap items-center gap-6 sm:gap-8 mt-4 border-b border-[#1E1E1E]/10">
-            {VEHICLE_FILTERS.map((f) => (
-              <button
-                key={f.value}
-                type="button"
-                onClick={() => setVehicleFilter(f.value)}
-                className={`relative pb-3 text-xs font-medium tracking-wide transition-colors ${
-                  vehicleFilter === f.value
-                    ? "text-[#1E1E1E] border-b-2 border-primary -mb-px"
-                    : "text-[#1E1E1E]/60 hover:text-[#1E1E1E]/90"
-                }`}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
-        </div>
-        <div className="relative flex overflow-hidden mask-linear-fade">
+      <div className="pt-0 pb-6 bg-white overflow-hidden border-t border-gray-200/80">
+        <div className="relative flex overflow-hidden mask-linear-fade mb-6 pt-12 sm:pt-14">
           <div className="flex items-stretch gap-6 animate-scroll-marquee-reverse px-6" style={{ width: "max-content" }}>
             {[...vehiclesToShow, ...vehiclesToShow].map((v, i) => (
               <article
@@ -249,13 +225,37 @@ export default function FleetServicesMarquee() {
                   <p className="text-[#1E1E1E]/60 text-sm line-clamp-2 font-light flex-1">{v.description}</p>
                   <Link
                     href="#reservation"
-                    className="mt-3 inline-flex items-center gap-2 text-[#1a1a1a] font-medium text-sm hover:underline"
+                    className="mt-3 inline-flex items-center gap-2 text-[#1E1E1E]/70 font-medium text-sm hover:underline transition-colors duration-300 group"
                   >
                     Plus d&apos;infos
-                    <ChevronRight className="w-4 h-4" strokeWidth={1.5} />
+                    <ChevronRight className="w-4 h-4 text-[#99ffcc]" strokeWidth={1.5} />
                   </Link>
                 </div>
               </article>
+            ))}
+          </div>
+        </div>
+        <div className="px-6">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-[#1E1E1E] tracking-tight font-display mb-2">
+            À louer
+          </h2>
+          <p className="text-[#1E1E1E]/50 text-xs sm:text-sm mb-4 font-light">
+            Location de véhicules haut de gamme sur la Côte d&apos;Azur
+          </p>
+          <div className="flex flex-wrap items-center gap-6 sm:gap-8 border-b border-[#1E1E1E]/10">
+            {VEHICLE_FILTERS.map((f) => (
+              <button
+                key={f.value}
+                type="button"
+                onClick={() => setVehicleFilter(f.value)}
+                className={`relative pb-3 text-xs font-medium tracking-wide transition-colors ${
+                  vehicleFilter === f.value
+                    ? "text-[#1E1E1E] border-b-2 border-primary -mb-px"
+                    : "text-[#1E1E1E]/60 hover:text-[#1E1E1E]/90"
+                }`}
+              >
+                {f.label}
+              </button>
             ))}
           </div>
         </div>
