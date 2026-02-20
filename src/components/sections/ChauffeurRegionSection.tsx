@@ -80,7 +80,7 @@ export default function ChauffeurRegionSection() {
               transition={{ duration: 0.95, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
               <h2 className="text-2xl lg:text-3xl font-light text-[#1a1a1a] tracking-tight mb-3 font-display">
-                L&apos;Excellence <span className="text-[#99ffcc]">à</span> Votre Service
+                L&apos;Excellence à Votre Service
               </h2>
               <p className="text-[#1a1a1a]/90 text-sm lg:text-base font-light leading-relaxed">
                 Deux solutions premium pour votre expérience sur la Côte d&apos;Azur : la{" "}

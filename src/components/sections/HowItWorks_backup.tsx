@@ -1,14 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { Phone, Calculator, Link2, ArrowRight } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 const STEPS = [
   {
@@ -29,109 +23,57 @@ const STEPS = [
 ];
 
 export default function HowItWorks() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!sectionRef.current) return;
-
-    const ctx = gsap.context(() => {
-      // Fil conducteur animé
-      gsap.fromTo(
-        ".progress-line",
-        { scaleX: 0 },
-        {
-          scaleX: 1,
-          duration: 2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 70%",
-          },
-        }
-      );
-
-      // Cards apparaissent en stagger
-      gsap.fromTo(
-        ".step-card",
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 70%",
-          },
-        }
-      );
-
-      // Icônes rotation subtile
-      gsap.fromTo(
-        ".step-icon",
-        { scale: 0, rotation: -180 },
-        {
-          scale: 1,
-          rotation: 0,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "back.out(1.7)",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 70%",
-          },
-        }
-      );
-
-      // CTA bounce
-      gsap.fromTo(
-        ".cta-button",
-        { scale: 0, opacity: 0 },
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 0.6,
-          ease: "back.out(1.4)",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 60%",
-          },
-        }
-      );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
     <section
-      ref={sectionRef}
       id="fonctionnement"
       className="py-24 bg-white border-y border-neutral-200 relative z-20"
       data-section="fonctionnement"
     >
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20">
+        <motion.div
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.95, ease: [0.25, 0.46, 0.45, 0.94] }}
+        >
           <span className="inline-block font-display text-[11px] font-extrabold uppercase tracking-[0.2em] text-neutral-900 mb-4 px-4 py-2 rounded-full bg-neutral-100">
             Simplicité Absolue
           </span>
           <h2 className="font-display text-3xl lg:text-5xl font-light text-neutral-900 tracking-tight mb-6">
             Votre Réservation en 3 Étapes
           </h2>
-        </div>
+        </motion.div>
 
         <div className="relative grid md:grid-cols-3 gap-12">
-          {/* Fil conducteur */}
-          <div className="hidden md:block absolute top-12 left-[15%] right-[15%] h-px overflow-hidden -z-10">
-            <div className="progress-line h-full w-full bg-neutral-400 origin-left" />
-          </div>
-
+          {/* Fil conducteur animé (1 → 2 → 3, chronologique) */}
+          <motion.div
+            className="hidden md:block absolute top-12 left-[15%] right-[15%] h-px overflow-hidden -z-10"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.4 }}
+          >
+            <motion.div
+              className="h-full w-full bg-neutral-400 origin-left"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 2, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.3 }}
+            />
+          </motion.div>
           {STEPS.map((step, i) => (
-            <div key={step.title} className="step-card relative text-center group opacity-0">
+            <motion.div
+              key={step.title}
+              className="relative text-center group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.95, ease: [0.25, 0.46, 0.45, 0.94], delay: i * 0.1 }}
+            >
               <div className="w-24 h-24 mx-auto bg-white border border-black rounded-full flex items-center justify-center mb-8 shadow-lg z-10 relative group-hover:border-neutral-800 group-hover:bg-neutral-50 transition-colors duration-500">
                 <step.icon
-                  className="step-icon w-10 h-10 text-primary"
+                  className="w-10 h-10 text-primary"
                   strokeWidth={1.5}
                 />
                 <div className="absolute -top-2 -right-2 w-8 h-8 bg-white border border-primary rounded-full flex items-center justify-center text-neutral-900 font-display font-light text-sm shadow-md">
@@ -144,25 +86,31 @@ export default function HowItWorks() {
               <p className="text-neutral-600 max-w-xs mx-auto font-light text-[15px] leading-relaxed">
                 {step.text}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        <div className="text-center mt-16">
+        <motion.div
+          className="text-center mt-16"
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.95, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.2 }}
+        >
           <Link
             href="#reservation"
-            className="cta-button group/link relative inline-flex items-center gap-2 font-display text-sm font-medium uppercase tracking-[0.2em] text-neutral-900 hover:text-primary transition-colors duration-300 pb-0.5 opacity-0"
+            className="group/link relative inline-flex items-center gap-2 font-display text-sm font-medium uppercase tracking-[0.2em] text-neutral-900 hover:text-primary transition-colors duration-300 pb-0.5"
           >
             <span className="relative">
               Réserver maintenant
               <span
                 className="absolute bottom-0 left-0 w-full h-px bg-primary scale-x-0 group-hover/link:scale-x-100 transition-transform duration-300 origin-left"
-                aria-hidden="true"
+                aria-hidden
               />
             </span>
             <ArrowRight className="w-3.5 h-3.5 text-primary opacity-70 group-hover/link:opacity-100 group-hover/link:translate-x-0.5 transition-all duration-300" strokeWidth={2} />
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

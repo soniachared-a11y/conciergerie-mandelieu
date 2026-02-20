@@ -383,7 +383,7 @@ export default function FleetServicesMarquee() {
                 <div className="overflow-hidden">
                   <span
                     ref={onVousRef}
-                    className="block text-4xl sm:text-5xl lg:text-6xl font-light text-[#99ffcc] font-display leading-tight"
+                    className="block text-4xl sm:text-5xl lg:text-6xl font-light font-display leading-tight bg-gradient-to-r from-white via-[#99ffcc] to-white bg-clip-text text-transparent"
                   >
                     ON VOUS
                   </span>
@@ -391,7 +391,7 @@ export default function FleetServicesMarquee() {
                 <div className="overflow-hidden">
                   <span
                     ref={emmeneRef}
-                    className="block text-4xl sm:text-5xl lg:text-6xl font-light text-[#99ffcc] font-display leading-tight"
+                    className="block text-4xl sm:text-5xl lg:text-6xl font-light font-display leading-tight bg-gradient-to-r from-white via-[#99ffcc] to-white bg-clip-text text-transparent"
                   >
                     EMMÈNE
                   </span>
@@ -448,25 +448,25 @@ export default function FleetServicesMarquee() {
             ))}
 
             {/* Titre intégré en bas à droite - occupe 2 colonnes */}
-            <div className="lg:col-span-2 flex flex-col justify-center items-end text-right relative">
-              <div className="relative text-center w-full">
+            <div className="lg:col-span-2 flex flex-col justify-center items-center text-center relative">
+              <div className="relative w-full">
                 <div className="relative inline-block">
                   <span
                     ref={titleEnRef}
-                    className="block text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold font-display leading-none bg-gradient-to-r from-[#99ffcc] via-[#0d9488] to-[#99ffcc] bg-clip-text text-transparent"
+                    className="block text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold font-display leading-none bg-gradient-to-r from-white via-[#99ffcc] to-white bg-clip-text text-transparent"
                   >
                     EN
                   </span>
                   <span
                     ref={titleLocationRef}
-                    className="block text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold font-display leading-none bg-gradient-to-r from-[#99ffcc] via-[#0d9488] to-[#99ffcc] bg-clip-text text-transparent"
+                    className="block text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold font-display leading-none bg-gradient-to-r from-white via-[#99ffcc] to-white bg-clip-text text-transparent"
                     style={{ transformOrigin: 'center bottom' }}
                   >
                     LOCATION
                   </span>
                 </div>
               </div>
-              <p ref={subtitleRef} className="text-base sm:text-lg text-white/60 mt-4 font-light w-full text-right">
+              <p ref={subtitleRef} className="text-base sm:text-lg text-white/70 mt-4 font-light w-full text-center max-w-md mx-auto">
                 Location de véhicules de prestige sans chauffeur sur la Côte d&apos;Azur
               </p>
             </div>
