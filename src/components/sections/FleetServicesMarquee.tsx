@@ -1,262 +1,310 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-type VehicleCategory = "all" | "SUV" | "Berline" | "Van";
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
-// Services de conciergerie — chauffeurs à disposition (bande fond noir)
-const chauffeurVehicles = [
+const chauffeurServices = [
   {
     image: "/assets/images/service-cannes-lions.jpg",
-    title: "Événements & Festivals",
-    subtitle: "Festival de Cannes",
-    description:
-      "Chauffeur privé pour le Festival de Cannes et les grands événements de la Côte d'Azur. Prise en charge à l'hôtel ou en villa, dépose sur le tapis rouge, attente sur site pendant les projections et cérémonies. Véhicules prestige (berlines, SUV), discrétion absolue et ponctualité. Devis sur mesure selon vos déplacements et la durée de présence.",
+    title: "Festival de Cannes",
+    category: "ÉVÉNEMENTS",
+    description: "Tapis rouge, projections privées et transferts VIP pendant le festival",
   },
   {
     image: "/assets/images/service-grand-prix-monaco.png",
     title: "Grand Prix de Monaco",
-    subtitle: "Formule E & F1",
-    description:
-      "Transferts VIP pour le Grand Prix de Monaco, la Formule E et tous les événements motorsport de la Principauté. Prise en charge aéroport ou hébergement, accès aux zones réservées, logistique sur mesure (horaires, parkings, passes). Hébergement des bagages et effets personnels à bord. Une expérience 100 % circuits, sans stress ni attente.",
+    category: "FORMULE 1",
+    description: "Accès circuits, zones réservées et logistique dédiée pour l'événement",
   },
   {
     image: "/assets/images/chauffeur-prive-cote-azur.png",
-    title: "Chauffeur privé Côte d'Azur",
-    subtitle: "Business & Transferts",
-    description:
-      "Transferts aéroport Nice Côte d'Azur, gares TGV (Nice, Cannes, Antibes), rendez-vous professionnels et séminaires d'entreprise. Berlines et véhicules haut de gamme, disponible 24h/24 et 7j/7. Tarifs fixes communiqués à la réservation, sans surprise. Idéal pour cadres, dirigeants et équipes en déplacement sur la Riviera.",
+    title: "Transferts Business",
+    category: "PROFESSIONNEL",
+    description: "Aéroports, gares TGV et rendez-vous d'affaires 24h/24 sur la Riviera",
   },
   {
     image: "/assets/images/tourisme-riviera.png",
-    title: "Tourisme",
-    subtitle: "Côte d'Azur",
-    description:
-      "Découvrez la Riviera avec un chauffeur dédié : villages perchés (Eze, Saint-Paul-de-Vence), caps et criques (Saint-Jean-Cap-Ferrat, Menton), calanques et routes des Alpes. Itinéraires sur mesure, commentaires sur les lieux et pauses photo à volonté. La plus belle région de France, en toute sérénité.",
+    title: "Découverte Riviera",
+    category: "TOURISME",
+    description: "Villages perchés, caps et routes panoramiques avec chauffeur guide",
   },
   {
     image: "/assets/images/shopping-bonnes-adresses.jpg",
-    title: "Shopping",
-    subtitle: "Bonnes adresses",
-    description:
-      "Shopping sur la Côte d'Azur avec un chauffeur qui connaît les bonnes adresses : boutiques discrètes, showrooms automobile et luxe, antiquaires et galeries. Livraisons et emballages gérés, cabine d'essayage à bord si besoin. Un vrai service conciergerie à la demande, sur une demi-journée ou une journée.",
+    title: "Shopping Prestige",
+    category: "LUXE",
+    description: "Boutiques confidentielles et showrooms avec service conciergerie",
   },
 ];
 
-// À louer (Services) — bande fond blanc
-const locationVehicles: Array<{
-  image: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  category: VehicleCategory;
-}> = [
+const locationVehicles = [
   {
     image: "/assets/images/urus-yellow.png",
     title: "Lamborghini Urus",
-    subtitle: "SUV Prestige",
-    description:
-      "Le SUV super sport de Lamborghini en location sur la Côte d'Azur. Moteur V8 biturbo, lignes agressives et intérieur cuir. Idéal pour les événements, le Grand Prix ou les déplacements prestige. Puissance, luxe et présence garantis. Livraison possible à l'hôtel ou en villa.",
     category: "SUV",
+    description: "Le SUV super sport de Lamborghini pour dominer la Côte d'Azur",
   },
   {
     image: "/assets/images/vehicles/range-rover-sport.png",
     title: "Range Rover Sport",
-    subtitle: "Sport",
-    description:
-      "Luxe digne des berlines et charme des supercars. Le Range Rover Sport allie prestige, praticité et conduite sportive. Parfait pour la Riviera : villas en hauteur, calanques, sorties entre amis. Intérieur raffiné, technologies de pointe. Location à la journée ou à la semaine.",
     category: "SUV",
+    description: "Luxe des berlines et dynamique des supercars en un seul véhicule",
   },
   {
     image: "/assets/images/vehicles/mercedes-g63-brabus.png",
     title: "Mercedes G63 Brabus",
-    subtitle: "G63 Brabus",
-    description:
-      "Luxe et puissance pour sillonner les Alpes et la Côte d'Azur avec élégance. Version Brabus : performances rehaussées, finitions exclusives. Une expérience inoubliable, en ville comme sur les routes de montagne. Idéal pour les amateurs de 4x4 haut de gamme.",
     category: "SUV",
+    description: "Puissance Brabus et finitions exclusives pour les Alpes et la Riviera",
   },
   {
     image: "/assets/images/vehicles/defender-110.png",
     title: "Range Rover Defender 110",
-    subtitle: "Défenseur",
-    description:
-      "Performance et confiance maximale. Le Defender 110 allie tout-terrain sérieux et carrosserie pensée pour l'exception. Sept places possibles, coffre volumineux. Parfait pour les familles ou les escapades aventure sur la Riviera et l'arrière-pays. Location flexible.",
     category: "SUV",
+    description: "Performance tout-terrain et élégance britannique pour l'arrière-pays",
   },
   {
     image: "/assets/images/vehicles/mercedes-s-class.png",
     title: "Mercedes Classe S",
-    subtitle: "Prestige",
-    description:
-      "Berline de prestige en location. Confort, silence de roulement et élégance pour vos déplacements sur la Côte d'Azur. Sièges massants, climatisation multic zones, équipements de sécurité de pointe. Idéale pour les transferts aéroport, séminaires ou sorties officielles.",
-    category: "Berline",
+    category: "BERLINE",
+    description: "Berline de prestige pour vos déplacements en toute élégance",
   },
   {
     image: "/assets/images/vehicles/mercedes-e-class.png",
     title: "Mercedes Classe E",
-    subtitle: "Executive",
-    description:
-      "Berline executive à louer. Confort et discrétion pour vos trajets professionnels ou personnels. Équilibre parfait entre standing et usage quotidien. Idéale pour les cadres en déplacement ou les familles exigeantes. Tarifs à la journée ou forfaits semaine.",
-    category: "Berline",
+    category: "BERLINE",
+    description: "Équilibre parfait entre confort executive et sophistication",
   },
   {
     image: "/assets/images/vehicles/mercedes-v-class.png",
     title: "Mercedes V-Class",
-    subtitle: "Van Premium",
-    description:
-      "Van premium à louer pour groupes et familles. Spacieux, confortable, vitres teintées et finitions haut de gamme. Idéal pour mariages, séminaires, transferts groupe ou sorties en famille sur la Riviera. Jusqu'à 7 passagers dans des conditions luxueuses.",
-    category: "Van",
+    category: "VAN",
+    description: "Van premium spacieux pour groupes et familles jusqu'à 7 passagers",
   },
 ];
 
-const VEHICLE_FILTERS: { value: VehicleCategory; label: string }[] = [
-  { value: "all", label: "Tous" },
-  { value: "SUV", label: "SUV" },
-  { value: "Berline", label: "Berline" },
-  { value: "Van", label: "Van" },
-];
-
 export default function FleetServicesMarquee() {
-  const [vehicleFilter, setVehicleFilter] = useState<VehicleCategory>("all");
-  const [expandedChauffeurIndex, setExpandedChauffeurIndex] = useState<number | null>(null);
-  const filteredVehicles =
-    vehicleFilter === "all"
-      ? locationVehicles
-      : locationVehicles.filter((v) => v.category === vehicleFilter);
-  const vehiclesToShow = filteredVehicles.length > 0 ? filteredVehicles : locationVehicles;
+  const servicesRef = useRef<HTMLDivElement>(null);
+  const vehiclesRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!servicesRef.current || !vehiclesRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Services cards reveal
+      const serviceCards = servicesRef.current?.querySelectorAll(".service-card");
+      serviceCards?.forEach((card, i) => {
+        gsap.fromTo(
+          card,
+          {
+            clipPath: "inset(100% 0% 0% 0%)",
+            opacity: 0,
+          },
+          {
+            clipPath: "inset(0% 0% 0% 0%)",
+            opacity: 1,
+            duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
+            },
+            delay: i * 0.15,
+          }
+        );
+
+        // Text stagger
+        const textElements = card.querySelectorAll(".card-text");
+        gsap.fromTo(
+          textElements,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
+            },
+            delay: i * 0.15 + 0.3,
+          }
+        );
+      });
+
+      // Vehicles cards reveal
+      const vehicleCards = vehiclesRef.current?.querySelectorAll(".vehicle-card");
+      vehicleCards?.forEach((card, i) => {
+        gsap.fromTo(
+          card,
+          {
+            clipPath: "inset(100% 0% 0% 0%)",
+            opacity: 0,
+          },
+          {
+            clipPath: "inset(0% 0% 0% 0%)",
+            opacity: 1,
+            duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
+            },
+            delay: i * 0.15,
+          }
+        );
+
+        // Text stagger
+        const textElements = card.querySelectorAll(".card-text");
+        gsap.fromTo(
+          textElements,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
+            },
+            delay: i * 0.15 + 0.3,
+          }
+        );
+      });
+
+      // Title animations
+      const titles = document.querySelectorAll(".section-title-word");
+      gsap.fromTo(
+        titles,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: titles[0],
+            start: "top 85%",
+          },
+        }
+      );
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section id="vehicules" className="relative z-20" data-section="fleet-services">
-      {/* Bande 1 : Nos chauffeurs à disposition — fond sombre */}
-      <div className="pt-12 sm:pt-14 pb-0 bg-background overflow-hidden">
-        <div className="mb-6 px-6">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-foreground tracking-tight font-display">
-            Nos chauffeurs à disposition
-          </h2>
-          <p className="text-foreground/50 text-xs sm:text-sm mt-1 font-light">
-            Services de conciergerie — événements, Grand Prix, transferts
-          </p>
-        </div>
-        <div className="relative flex overflow-hidden mask-linear-fade pb-12 sm:pb-14">
-          <div className="flex items-stretch gap-6 animate-scroll-marquee-slow px-6" style={{ width: "max-content" }}>
-            {[...chauffeurVehicles, ...chauffeurVehicles].map((v, i) => {
-              const isExpanded = expandedChauffeurIndex === i;
-              return (
-                <article
-                  key={`chauffeur-${i}`}
-                  className="flex-shrink-0 w-[280px] sm:w-[320px] rounded-2xl overflow-hidden border border-primary/20 bg-background/80 shadow-xl hover:border-primary/40 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 flex flex-col"
-                >
-                  <div className="relative h-[140px] bg-foreground/10 shrink-0">
-                    <Image
-                      src={v.image}
-                      alt={v.title}
-                      fill
-                      className="object-cover"
-                      sizes="320px"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
+      {/* Section Services Chauffeurs */}
+      <div ref={servicesRef} className="py-16 sm:py-20 bg-[#050505] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-12 text-center">
+            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-light text-white font-display mb-3">
+              <span className="section-title-word inline-block">Vos</span>{" "}
+              <span className="section-title-word inline-block">Expériences</span>
+            </h2>
+            <p className="text-sm uppercase tracking-[0.2em] text-white/50 font-light">
+              Conciergerie privée sur la Côte d&apos;Azur
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {chauffeurServices.map((service, i) => (
+              <Link
+                key={i}
+                href="#reservation"
+                className="service-card group relative block aspect-[4/5] overflow-hidden rounded-lg"
+              >
+                <div className="absolute inset-0 will-change-transform">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                </div>
+
+                <div className="relative h-full flex flex-col justify-end p-6 z-10">
+                  <p className="card-text text-[10px] uppercase tracking-[0.2em] text-[#99ffcc] mb-2 font-medium">
+                    {service.category}
+                  </p>
+                  <h3 className="card-text text-2xl lg:text-3xl font-light text-white font-display mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="card-text text-sm text-white/70 font-light leading-relaxed mb-4">
+                    {service.description}
+                  </p>
+                  <div className="card-text flex items-center gap-2 text-white/90 text-sm font-medium group-hover:gap-4 transition-all duration-300">
+                    Découvrir l&apos;expérience
+                    <ArrowRight className="w-4 h-4" />
                   </div>
-                  <div className="p-4 min-h-[124px] flex flex-col flex-1">
-                    <h3 className="text-base font-semibold text-foreground">{v.title}</h3>
-                    <span className="inline-block w-fit font-display text-[11px] font-medium uppercase tracking-[0.15em] mt-1 mb-1.5 text-primary/90 whitespace-nowrap">
-                      {v.subtitle}
-                    </span>
-                    <p
-                      className={`text-foreground/60 text-sm font-light flex-1 ${isExpanded ? "" : "line-clamp-2"}`}
-                    >
-                      {v.description}
-                    </p>
-                    <div className="mt-3 flex items-center gap-3 flex-wrap">
-                      <button
-                        type="button"
-                        onClick={() => setExpandedChauffeurIndex(isExpanded ? null : i)}
-                        className="inline-flex items-center gap-2 text-primary font-medium text-sm hover:underline"
-                      >
-                        {isExpanded ? "Voir moins" : "Lire la suite"}
-                        <ChevronRight
-                          className={`w-4 h-4 transition-transform ${isExpanded ? "rotate-[-90deg]" : ""}`}
-                          strokeWidth={1.5}
-                        />
-                      </button>
-                      {isExpanded && (
-                        <Link
-                          href="#reservation"
-                          className="inline-flex items-center gap-2 text-primary/80 font-medium text-sm hover:underline hover:text-primary"
-                        >
-                          Réserver
-                          <ChevronRight className="w-4 h-4" strokeWidth={1.5} />
-                        </Link>
-                      )}
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Bande 2 : À louer — fond blanc, bordure de séparation */}
-      <div className="pt-0 pb-6 bg-white overflow-hidden border-t border-gray-200/80">
-        <div className="relative flex overflow-hidden mask-linear-fade mb-6 pt-12 sm:pt-14">
-          <div className="flex items-stretch gap-6 animate-scroll-marquee-reverse px-6" style={{ width: "max-content" }}>
-            {[...vehiclesToShow, ...vehiclesToShow].map((v, i) => (
-              <article
-                key={`location-${i}`}
-                className="flex-shrink-0 w-[280px] sm:w-[320px] rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
+      {/* Section Véhicules Location */}
+      <div ref={vehiclesRef} className="py-16 sm:py-20 bg-[#050505] border-t border-white/5 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {locationVehicles.map((vehicle, i) => (
+              <Link
+                key={i}
+                href="#reservation"
+                className="vehicle-card group relative block aspect-[4/5] overflow-hidden rounded-lg shadow-xl shadow-[#99ffcc]/5 hover:shadow-[#99ffcc]/15 transition-shadow duration-500"
               >
-                <div className="relative h-[140px] bg-gray-100">
+                <div className="absolute inset-0 will-change-transform">
                   <Image
-                    src={v.image}
-                    alt={v.title}
+                    src={vehicle.image}
+                    alt={vehicle.title}
                     fill
-                    className="object-contain object-center p-3"
-                    sizes="320px"
+                    className="object-contain object-center transition-transform duration-700 ease-out group-hover:scale-105 p-6"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent" />
                 </div>
-                <div className="p-4 min-h-[124px] flex flex-col">
-                  <h3 className="text-base font-semibold text-[#1E1E1E]">{v.title}</h3>
-                  <span className="inline-block w-fit font-display text-[11px] font-medium uppercase tracking-[0.15em] mt-1 mb-1.5 text-[#1E1E1E]/70 whitespace-nowrap">
-                    {v.subtitle}
-                  </span>
-                  <p className="text-[#1E1E1E]/60 text-sm line-clamp-2 font-light flex-1">{v.description}</p>
-                  <Link
-                    href="#reservation"
-                    className="mt-3 inline-flex items-center gap-2 text-[#1E1E1E]/70 font-medium text-sm hover:underline transition-colors duration-300 group"
-                  >
-                    Plus d&apos;infos
-                    <ChevronRight className="w-4 h-4 text-[#99ffcc]" strokeWidth={1.5} />
-                  </Link>
+
+                <div className="relative h-full flex flex-col justify-end p-6 z-10">
+                  <p className="card-text text-[10px] uppercase tracking-[0.2em] text-[#99ffcc] mb-2 font-medium">
+                    {vehicle.category}
+                  </p>
+                  <h3 className="card-text text-2xl lg:text-3xl font-light text-white font-display mb-3">
+                    {vehicle.title}
+                  </h3>
+                  <p className="card-text text-sm text-white/70 font-light leading-relaxed mb-4">
+                    {vehicle.description}
+                  </p>
+                  <div className="card-text flex items-center gap-2 text-white/90 text-sm font-medium group-hover:gap-4 transition-all duration-300">
+                    Découvrir
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
                 </div>
-              </article>
+              </Link>
             ))}
-          </div>
-        </div>
-        <div className="px-6">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-[#1E1E1E] tracking-tight font-display mb-2">
-            À louer
-          </h2>
-          <p className="text-[#1E1E1E]/50 text-xs sm:text-sm mb-4 font-light">
-            Location de véhicules haut de gamme sur la Côte d&apos;Azur
-          </p>
-          <div className="flex flex-wrap items-center gap-6 sm:gap-8 border-b border-[#1E1E1E]/10">
-            {VEHICLE_FILTERS.map((f) => (
-              <button
-                key={f.value}
-                type="button"
-                onClick={() => setVehicleFilter(f.value)}
-                className={`relative pb-3 text-xs font-medium tracking-wide transition-colors ${
-                  vehicleFilter === f.value
-                    ? "text-[#1E1E1E] border-b-2 border-primary -mb-px"
-                    : "text-[#1E1E1E]/60 hover:text-[#1E1E1E]/90"
-                }`}
-              >
-                {f.label}
-              </button>
-            ))}
+
+            {/* Titre intégré en bas à droite - occupe 2 colonnes */}
+            <div className="lg:col-span-2 flex flex-col justify-center items-end text-right">
+              <h2 className="text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold font-display leading-none bg-gradient-to-r from-[#99ffcc] via-[#0d9488] to-[#99ffcc] bg-clip-text text-transparent">
+                EN<br />LOCATION
+              </h2>
+              <p className="text-base sm:text-lg text-white/60 mt-4 font-light">
+                Location de véhicules de prestige sans chauffeur sur la Côte d&apos;Azur
+              </p>
+            </div>
           </div>
         </div>
       </div>
