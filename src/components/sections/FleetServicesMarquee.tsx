@@ -92,11 +92,98 @@ const locationVehicles = [
 export default function FleetServicesMarquee() {
   const servicesRef = useRef<HTMLDivElement>(null);
   const vehiclesRef = useRef<HTMLDivElement>(null);
+  const titleEnRef = useRef<HTMLSpanElement>(null);
+  const titleLocationRef = useRef<HTMLSpanElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const onVousRef = useRef<HTMLSpanElement>(null);
+  const emmeneRef = useRef<HTMLSpanElement>(null);
+  const vivezRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
-    if (!servicesRef.current || !vehiclesRef.current) return;
+    if (!servicesRef.current || !vehiclesRef.current || !titleEnRef.current || !titleLocationRef.current || !subtitleRef.current || !onVousRef.current || !emmeneRef.current || !vivezRef.current) return;
 
     const ctx = gsap.context(() => {
+      // Animation "ON VOUS EMMÈNE" reveal horizontal (rideau qui s'ouvre)
+      const tlExperiences = gsap.timeline({
+        scrollTrigger: {
+          trigger: onVousRef.current,
+          start: "top 80%",
+        },
+      });
+
+      tlExperiences
+        .fromTo(
+          onVousRef.current,
+          { x: -100, opacity: 0 },
+          { x: 0, opacity: 1, duration: 1, ease: "power3.out" }
+        )
+        .fromTo(
+          emmeneRef.current,
+          { x: -100, opacity: 0 },
+          { x: 0, opacity: 1, duration: 1, ease: "power3.out" },
+          "-=0.75"
+        )
+        .fromTo(
+          vivezRef.current,
+          { y: 15, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
+          "+=0.3"
+        );
+
+      // Animation "EN LOCATION" drop avec bounce
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: titleLocationRef.current,
+          start: "top 80%",
+        },
+      });
+
+      tl.fromTo(
+        titleEnRef.current,
+        {
+          y: -300,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.2,
+          ease: "bounce.out",
+        }
+      )
+        .to(
+          titleLocationRef.current,
+          {
+            scaleY: 0.85,
+            duration: 0.15,
+            ease: "power2.out",
+          },
+          0.6
+        )
+        .to(
+          titleLocationRef.current,
+          {
+            scaleY: 1,
+            duration: 0.3,
+            ease: "power2.out",
+          },
+          0.75
+        )
+        .fromTo(
+          subtitleRef.current,
+          {
+            opacity: 0,
+            y: 20,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power2.out",
+          },
+          "+=0.3"
+        );
+
       // Services cards reveal
       const serviceCards = servicesRef.current?.querySelectorAll(".service-card");
       serviceCards?.forEach((card, i) => {
@@ -219,7 +306,7 @@ export default function FleetServicesMarquee() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {chauffeurServices.map((service, i) => (
+            {chauffeurServices.slice(0, 3).map((service, i) => (
               <Link
                 key={i}
                 href="#reservation"
@@ -253,6 +340,70 @@ export default function FleetServicesMarquee() {
                 </div>
               </Link>
             ))}
+            
+            {/* Rangée 2 : 2 cards + bloc titre */}
+            {chauffeurServices.slice(3, 5).map((service, i) => (
+              <Link
+                key={i + 3}
+                href="#reservation"
+                className="service-card group relative block aspect-[4/5] overflow-hidden rounded-lg"
+              >
+                <div className="absolute inset-0 will-change-transform">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                </div>
+
+                <div className="relative h-full flex flex-col justify-end p-6 z-10">
+                  <p className="card-text text-[10px] uppercase tracking-[0.2em] text-[#99ffcc] mb-2 font-medium">
+                    {service.category}
+                  </p>
+                  <h3 className="card-text text-2xl lg:text-3xl font-light text-white font-display mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="card-text text-sm text-white/70 font-light leading-relaxed mb-4">
+                    {service.description}
+                  </p>
+                  <div className="card-text flex items-center gap-2 text-white/90 text-sm font-medium group-hover:gap-4 transition-all duration-300">
+                    Découvrir l&apos;expérience
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </div>
+              </Link>
+            ))}
+
+            {/* Bloc titre animé */}
+            <div className="relative aspect-[4/5] rounded-lg bg-[#050505] border border-white/5 flex flex-col justify-center items-center p-6">
+              <div className="text-center overflow-hidden">
+                <div className="overflow-hidden">
+                  <span
+                    ref={onVousRef}
+                    className="block text-4xl sm:text-5xl lg:text-6xl font-light text-[#99ffcc] font-display leading-tight"
+                  >
+                    ON VOUS
+                  </span>
+                </div>
+                <div className="overflow-hidden">
+                  <span
+                    ref={emmeneRef}
+                    className="block text-4xl sm:text-5xl lg:text-6xl font-light text-[#99ffcc] font-display leading-tight"
+                  >
+                    EMMÈNE
+                  </span>
+                </div>
+                <p
+                  ref={vivezRef}
+                  className="mt-6 text-2xl sm:text-3xl text-white font-display italic font-light"
+                >
+                  Vivez la Riviera
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -297,11 +448,25 @@ export default function FleetServicesMarquee() {
             ))}
 
             {/* Titre intégré en bas à droite - occupe 2 colonnes */}
-            <div className="lg:col-span-2 flex flex-col justify-center items-end text-right">
-              <h2 className="text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold font-display leading-none bg-gradient-to-r from-[#99ffcc] via-[#0d9488] to-[#99ffcc] bg-clip-text text-transparent">
-                EN<br />LOCATION
-              </h2>
-              <p className="text-base sm:text-lg text-white/60 mt-4 font-light">
+            <div className="lg:col-span-2 flex flex-col justify-center items-end text-right relative">
+              <div className="relative text-center w-full">
+                <div className="relative inline-block">
+                  <span
+                    ref={titleEnRef}
+                    className="block text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold font-display leading-none bg-gradient-to-r from-[#99ffcc] via-[#0d9488] to-[#99ffcc] bg-clip-text text-transparent"
+                  >
+                    EN
+                  </span>
+                  <span
+                    ref={titleLocationRef}
+                    className="block text-[60px] sm:text-[100px] lg:text-[140px] font-extrabold font-display leading-none bg-gradient-to-r from-[#99ffcc] via-[#0d9488] to-[#99ffcc] bg-clip-text text-transparent"
+                    style={{ transformOrigin: 'center bottom' }}
+                  >
+                    LOCATION
+                  </span>
+                </div>
+              </div>
+              <p ref={subtitleRef} className="text-base sm:text-lg text-white/60 mt-4 font-light w-full text-right">
                 Location de véhicules de prestige sans chauffeur sur la Côte d&apos;Azur
               </p>
             </div>
